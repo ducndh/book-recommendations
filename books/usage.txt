@@ -1,27 +1,37 @@
+Author: Victor Huang, Sky Lu
+
 usage: book <command> [<args>]
-"hello"
+
 These are commands of Book in various situations:
 
 find books by different means
-    find [<options>] [<args>]
-        -t <string>, --title <string>	print books whose titles contains <string>
-	-a <string>, --author <string>	print authors whose names contains <string> and a list of their books
-	-y <integer1> <integer2>, --year <integer1> <integer2>
+    find [<args>]
+        "string" (args in double quotation marks)
+					print books whose titles contains <string>
+					ex. $ book find "1984"
+	
+	'string' (args in single quotation marks)
+					print authors whose names contains <string> and a list of their books
+					ex. $ book find 'connie'
+
+	integer1 integer2 (two integer args)
 					print books published between years <integer1> and <integer2>
-	-ta <string1> <string2>		print authors whose names contains <string1> first and a list of their books whose title contains <string2>
-	-at <string1> <string2> 	print authors whose names contains <string1> first and a list of their books whose title contains <string2>
-	-ty <string> <integer1> <integer2>
-	-yt <string> <integer1> <integer2>
-					print books whose titles contains <string> published between years <integer1> <integer2>
-	-ay <string> <integer1> <integer2>
-	-ya <string> <integer1> <integer2>
-					print authors whose names contains <string> and a list of their books published between years <integer1> <integer2>
+					ex. $ book find 1990 2010
+	
 	-h --help
 					Prints a list of all commands and their function
 
-	
-	Smart Search: find <String, int, etc.>  Arguments in double quotation marks are treated as titles, single quotes as author name, and integer values as year 
-    note:
-	1. All strings are enclosed by double quotes.
-		ex. find -a "connie"
-	2. All find options are case-insensitive.
+    Note:
+	1. Multiple arguments of the same type will be handle in OR logic
+		ex. $ book find "boys" "wild"
+			Boys and Sex, 2020, Peggy Orenstein (1961-)
+			The Tenant of Wildfell Hall, 1848, Ann Bronte (1820-1849)
+			A Wild Sheep Chase, 1982, Haruki Murakami(1949-)
+	2. Multiple arguments of different types will be handle in AND logic
+		ex. $ book find 'Peggy' 'Herman' "boys"
+			Peggy Orenstein:
+				Boys and Sex, 2020, Peggy Orenstein (1961-)
+			Herman:
+ 				(No book match the title)
+	3. All find options are case-insensitive.
+	4. If there are illegal arguements, the program will print this usage.txt.
