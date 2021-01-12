@@ -8,7 +8,7 @@ find books by different means
 	-a <string>, --author <string>	print authors whose names contains <string> and a list of their books
 	-y <integer1> <integer2>, --year <integer1> <integer2>
 					print books published between years <integer1> and <integer2>
-	-ta <string1> <string2>		print books whose titles contains <string1> and whose author contains <string2>
+	-ta <string1> <string2>		print authors whose names contains <string1> first and a list of their books whose title contains <string2>
 	-at <string1> <string2> 	print authors whose names contains <string1> first and a list of their books whose title contains <string2>
 	-ty <string> <integer1> <integer2>
 	-yt <string> <integer1> <integer2>
@@ -16,8 +16,11 @@ find books by different means
 	-ay <string> <integer1> <integer2>
 	-ya <string> <integer1> <integer2>
 					print authors whose names contains <string> and a list of their books published between years <integer1> <integer2>
-	
+	-h --help
+					Prints a list of all commands and their function
 
+	
+	Smart Search: find <String, int, etc.>  Arguments in double quotation marks are treated as titles, single quotes as author name, and integer values as year 
     note:
 	1. All strings are enclosed by double quotes.
 		ex. find -a "connie"
