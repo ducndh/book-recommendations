@@ -1,0 +1,24 @@
+usage: book <command> [<args>]
+
+These are commands of Book in various situations:
+
+find books by different means
+    find [<options>] [<args>]
+        -t <string>, --title <string>	print books whose titles contains <string>
+	-a <string>, --author <string>	print authors whose names contains <string> and a list of their books
+	-y <integer1> <integer2>, --year <integer1> <integer2>
+					print books published between years <integer1> and <integer2>
+	-ta <string1> <string2>		print books whose titles contains <string1> and whose author contains <string2>
+	-at <string1> <string2> 	print authors whose names contains <string1> first and a list of their books whose title contains <string2>
+	-ty <string> <integer1> <integer2>
+	-yt <string> <integer1> <integer2>
+					print books whose titles contains <string> published between years <integer1> <integer2>
+	-ay <string> <integer1> <integer2>
+	-ya <string> <integer1> <integer2>
+					print authors whose names contains <string> and a list of their books published between years <integer1> <integer2>
+	
+
+    note:
+	1. All strings are enclosed by double quotes.
+		ex. find -a "connie"
+	2. All find options are case-insensitive.
