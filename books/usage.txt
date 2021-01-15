@@ -6,17 +6,10 @@ These are commands of Book in various situations:
 
 find books by different means
     find [<args>]
-        "string" (args in double quotation marks)
-					print books whose titles contains <string>
-					ex. $ book find "1984"
-	
-	'string' (args in single quotation marks)
-					print authors whose names contains <string> and a list of their books
-					ex. $ book find 'connie'
 
-	integer1 integer2 (two integer args)
-					print books published between years <integer1> and <integer2>
-					ex. $ book find 1990 2010
+	-t, --title		print books whose titles contains the argument
+	-a, --author 	print authors whose names contains the argument and a list of their books
+	-y, --year		print books published between two year arguments
 	
 	-h --help
 					Prints a list of all commands and their function
