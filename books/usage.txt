@@ -5,7 +5,8 @@ usage: books.py [-h] [-t TITLE [TITLE ...]] [-a AUTHOR [AUTHOR ...]] [-y YEAR [Y
 These are commands of Book in various situations:
 
 optional arguments:
-	-h, --help              show this help message and exit
+	-h, --help              
+							show this help message and exit
 	-t TITLE [TITLE ...], --title TITLE [TITLE ...]
 							print books whose titles contains the argument
 	-a AUTHOR [AUTHOR ...], --author AUTHOR [AUTHOR ...]
