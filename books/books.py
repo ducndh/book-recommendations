@@ -3,7 +3,7 @@ Author: Tianyi Lu, Victor Huang
 Description: Gets arguments from users and then searchs for books matching user argument input
 Date: 2021-01-15 09:10:29
 LastEditors: Tianyi Lu
-LastEditTime: 2021-01-15 10:12:32
+LastEditTime: 2021-01-15 10:13:53
 '''
 
 import argparse
@@ -36,9 +36,9 @@ def get_arguments():
     return args
 
 def read_file():
-    #row[0] = title //
-    #row[1] = year //
-    #row[2] = author //
+    #row[0] = title
+    #row[1] = year
+    #row[2] = author
 
     books = []
     with open('books.csv', 'r') as csv_file:
@@ -49,10 +49,17 @@ def read_file():
             
     return books
 
-def get_title(args):
-    pass
+def get_title(args, books):
+    tlist = []
+    for arg in args.title:
+        for book in books:
+            if arg in book.title:
+                tlist.append(book)
+    return set(tlist)                
 
-def get_author(args):
+        
+
+def get_author(args, books):
     pass
 
 def get_year(args):
@@ -62,7 +69,9 @@ def combine(tlist, alist, ylist):
     pass
 
 if __name__ == "__main__":
+    args = get_arguments()
     books = read_file()
     for book in books:
         
         print(book)
+    
