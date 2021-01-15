@@ -15,16 +15,16 @@ optional arguments:
 
 
     Note:
-	1. Multiple arguments of the same type will be handle in OR logic
+	1. Multiple arguments of the same flag will be handled in OR logic
 		ex. $  python3 books.py -t boys wild
 			Boys and Sex, 2020, Peggy Orenstein (1961-)
 			The Tenant of Wildfell Hall, 1848, Ann Bronte (1820-1849)
 			A Wild Sheep Chase, 1982, Haruki Murakami(1949-)
-	2. Multiple arguments of different types will be handle in AND logic
+	2. Multiple arguments of different flags will be handled in AND logic
 		ex. $  python3 books.py -t boys -a Peggy Herman
 			Peggy Orenstein:
 				Boys and Sex, 2020, Peggy Orenstein (1961-)
 			Herman:
- 				(No book match the title)
+ 				(No book matches)
 	3. All find options are case-insensitive.
-	4. If there are illegal arguements, the program will print this usage.txt.
+	4. If there are illegal arguments, the program will print the default help message.

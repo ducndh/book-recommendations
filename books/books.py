@@ -3,7 +3,7 @@ Author: Tianyi Lu, Victor Huang
 Description: Gets arguments from users and then searchs for books matching user argument input
 Date: 2021-01-15 09:10:29
 LastEditors: Tianyi Lu
-LastEditTime: 2021-01-15 10:49:11
+LastEditTime: 2021-01-15 12:08:22
 '''
 
 import argparse
@@ -75,6 +75,8 @@ def get_author(args, books):
             titles = [b.title for b in adict[book.author]]
             if not book.title in titles:
                 adict[book.author].append(book)
+
+    
     return adict
 
 def get_year(args, books):
@@ -83,6 +85,7 @@ def get_year(args, books):
 
     if (len(args.year) % 2) == 1:
         args.year.pop()
+        
     i = 0
     ylist = []
     sortedYears = sorted(args.year)
@@ -92,7 +95,7 @@ def get_year(args, books):
                 ylist.append(book)
         i += 2
 
-    return ylist  
+    return ylist
     
 def intersection(lst1, lst2): 
     lst3 = [value for value in lst1 if value in lst2] 
@@ -100,20 +103,25 @@ def intersection(lst1, lst2):
 
 def combine(tlist, adict, ylist):
     tylist = []
-    if tlist and ylist:
+    only_adict = False
+    if (tlist is not None) and (ylist is not None):
         tylist = intersection(tlist, ylist)
     elif tlist:
         tylist = tlist
     elif ylist:
         tylist = ylist
+    else:
+        only_adict = True
+
     if adict:
         for author, books in adict.items():
-            adict[author] = intersection(books, tylist)
+            if not only_adict:
+                adict[author] = intersection(books, tylist)
         for author in adict.keys():
             print()
             print(author+": ")
             if not adict[author]:
-                print( "\t No books matched for this author")
+                print( "\t(No book matches)")
             else:
                 for book in adict[author]:
                     print("\t" + str(book))
