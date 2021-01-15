@@ -3,11 +3,20 @@ Author: Tianyi Lu, Victor Huang
 Description: Gets arguments from users and then searchs for books matching user argument input
 Date: 2021-01-15 09:10:29
 LastEditors: Tianyi Lu
-LastEditTime: 2021-01-15 09:19:27
+LastEditTime: 2021-01-15 09:57:35
 '''
 
 import argparse
 import csv
+
+class Book():
+    def __init__(self, title, year, author):
+        self.title = title
+        self.year = year
+        self.author = author
+
+    def __repr__(self):
+        return ", ".join([self.title, self.year, self.author])
 
 def get_arguments():
     parser = argparse.ArgumentParser(description='Enter some information to start looking for books')
@@ -26,26 +35,19 @@ def get_arguments():
 
     return args
 
-class Book()
-    
+def read_file():
+    #row[0] = title //
+    #row[1] = year //
+    #row[2] = author //
 
-
-def read_file(args):
-//row[0] = title //
-//row[1] = year //
-//row[2] = author //
-
-    with open('books.csv') as csv_file:
-    csv_reader = csv.reader(csv_file, delimiter=',')
-    line_count = 0
-    for row in csv_reader:
-        if line_count == 0:
-            print(f'Column names are {", ".join(row)}')
-            line_count += 1
-        else:
-            print(f'\t{row[0]} works in the {row[1]} department, and was born in {row[2]}.')
-            line_count += 1
-    print(f'Number of matches:  {line_count}')
+    books = []
+    with open('books.csv', 'r') as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        for row in csv_reader:
+            book = Book(row[0], row[1], row[2])
+            books.append(book)
+            
+    return books
 
 def get_title(args):
     pass
@@ -60,4 +62,6 @@ def combine(tlist, alist, ylist):
     pass
 
 if __name__ == "__main__":
-    pass
+    books = read_file()
+    for book in books:
+        print(book)
