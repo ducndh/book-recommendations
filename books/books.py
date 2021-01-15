@@ -17,6 +17,9 @@ class Book():
 
     def __repr__(self):
         return ', '.join([self.title, self.year, self.author])
+    
+    def __eq__(self, other): 
+        return self.__dict__ == other.__dict__
 
 def get_arguments():
     parser = argparse.ArgumentParser(description='Enter some information to start looking for books')
@@ -29,16 +32,10 @@ def get_arguments():
 
     args = parser.parse_args()
 
-    print(args.title)
-    print(args.author)
-    print(args.year)
 
     return args
 
 def read_file():
-    #row[0] = title
-    #row[1] = year
-    #row[2] = author
 
     books = []
     with open('books.csv', 'r') as csv_file:
@@ -57,8 +54,7 @@ def get_title(args, books):
     for arg in args.title:
         for book in books:
             if arg.lower() in book.title.lower():
-                titles = [book.title for book in tlist]
-                if not book.title in titles:
+                if not book in tlist:
                     tlist.append(book)
     return tlist              
         
@@ -81,31 +77,56 @@ def get_author(args, books):
                 adict[book.author].append(book)
     return adict
 
-def get_year(args):
+def get_year(args, books):
     if not args.year:
-        ylist = None
+        return None
 
-    if (len(args.author) % 2) == 1:
-        args.author.pop()
-
+    if (len(args.year) % 2) == 1:
+        args.year.pop()
     i = 0
+    ylist = []
+    sortedYears = sorted(args.year)
     while i < (len(args.year) - 1):
         for book in books:
-            book.year.lower():
-                authors = [book.author for book in alist]
-                if not book.author in authors:
-                    alist.append(book)
-    return alist  
+            if book.year >= sortedYears[i] and book.year <= sortedYears[i + 1]:
+                ylist.append(book)
+        i += 2
 
-def combine(tlist, alist, ylist):
-    pass
+    return ylist  
+    
+def intersection(lst1, lst2): 
+    lst3 = [value for value in lst1 if value in lst2] 
+    return lst3
+
+def combine(tlist, adict, ylist):
+    tylist = []
+    if tlist and ylist:
+        tylist = intersection(tlist, ylist)
+    elif tlist:
+        tylist = tlist
+    elif ylist:
+        tylist = ylist
+    if adict:
+        for author, books in adict.items():
+            adict[author] = intersection(books, tylist)
+        for author in adict.keys():
+            print()
+            print(author+": ")
+            if not adict[author]:
+                print( "\t No books matched for this author")
+            else:
+                for book in adict[author]:
+                    print("\t" + str(book))
+                
+    else:
+        for book in tylist:
+            print(book)
 
 if __name__ == "__main__":
     args = get_arguments()
     books = read_file()
+    tlist = get_title(args, books)
+    ylist = get_year(args, books)
     adict = get_author(args, books)
-    for author in adict.keys():
-        print(author+": ")
-        for book in adict[author]:
-            print(book)
+    combine(tlist, adict, ylist)
     
