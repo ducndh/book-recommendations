@@ -36,9 +36,9 @@ def get_arguments():
     return args
 
 def read_file():
-    #row[0] = title //
-    #row[1] = year //
-    #row[2] = author //
+    #row[0] = title
+    #row[1] = year
+    #row[2] = author
 
     books = []
     with open('books.csv', 'r') as csv_file:
@@ -49,10 +49,17 @@ def read_file():
             
     return books
 
-def get_title(args):
-    pass
+def get_title(args, books):
+    tlist = []
+    for arg in args.title:
+        for book in books:
+            if arg in book.title:
+                tlist.append(book)
+    return set(tlist)                
 
-def get_author(args):
+        
+
+def get_author(args, books):
     pass
 
 def get_year(args):
@@ -62,6 +69,8 @@ def combine(tlist, alist, ylist):
     pass
 
 if __name__ == "__main__":
+    args = get_arguments()
     books = read_file()
-    for book in books:
+    for book in get_title(args, books):
         print(book)
+    
