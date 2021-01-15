@@ -1,6 +1,6 @@
 Author: Victor Huang, Sky Lu
 
-usage: books.py [-h] [-t TITLE [TITLE ...]] [-a AUTHOR [AUTHOR ...]] [-y YEAR [YEAR ...]]
+usage: python3 books.py [-h] [-t TITLE [TITLE ...]] [-a AUTHOR [AUTHOR ...]] [-y YEAR [YEAR ...]]
 
 These are commands of Book in various situations:
 

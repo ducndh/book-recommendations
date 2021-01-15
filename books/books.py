@@ -3,7 +3,7 @@ Author: Tianyi Lu, Victor Huang
 Description: Gets arguments from users and then searchs for books matching user argument input
 Date: 2021-01-15 09:10:29
 LastEditors: Tianyi Lu
-LastEditTime: 2021-01-15 12:17:47
+LastEditTime: 2021-01-15 15:49:26
 '''
 
 import argparse
@@ -22,7 +22,8 @@ class Book():
         return self.__dict__ == other.__dict__
 
 def get_arguments():
-    parser = argparse.ArgumentParser(description='Enter some information to start looking for books')
+    parser = argparse.ArgumentParser(prog="python3 books.py",
+                                     description='Search books based on different methods.')
     parser.add_argument('-t', '--title', type=str, nargs='+',
                         help='print books whose titles contains the argument')
     parser.add_argument('-a', '--author', type=str, nargs='+',
@@ -72,9 +73,7 @@ def get_author(args, books):
 
     for book in books:
         if book.author in adict.keys():
-            titles = [b.title for b in adict[book.author]]
-            if not book.title in titles:
-                adict[book.author].append(book)
+            adict[book.author].append(book)
 
     
     return adict
@@ -92,7 +91,8 @@ def get_year(args, books):
     while i < (len(args.year) - 1):
         for book in books:
             if int(book.year) >= sortedYears[i] and int(book.year) <= sortedYears[i + 1]:
-                ylist.append(book)
+                if not book in ylist:
+                    ylist.append(book)
         i += 2
 
     return ylist
@@ -127,8 +127,9 @@ def combine(tlist, adict, ylist):
                     print("\t" + str(book))
                 
     else:
-        for book in tylist:
-            print(book)
+        print("\n%d books found\n" % len(tylist))
+        for i, book in enumerate(tylist):
+            print(str(i+1)+". "+str(book))
 
 if __name__ == "__main__":
     args = get_arguments()
