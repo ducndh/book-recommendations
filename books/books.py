@@ -3,7 +3,7 @@ Author: Tianyi Lu, Victor Huang
 Description: Gets arguments from users and then searchs for books matching user argument input
 Date: 2021-01-15 09:10:29
 LastEditors: Tianyi Lu
-LastEditTime: 2021-01-15 12:08:22
+LastEditTime: 2021-01-15 12:17:47
 '''
 
 import argparse
@@ -27,7 +27,7 @@ def get_arguments():
                         help='print books whose titles contains the argument')
     parser.add_argument('-a', '--author', type=str, nargs='+',
                         help='print authors whose names contains the argument and a list of their books')
-    parser.add_argument('-y', '--year', type=str, nargs='+',
+    parser.add_argument('-y', '--year', type=int, nargs='+',
                         help='print books published between two year arguments')                    
 
     args = parser.parse_args()
@@ -91,7 +91,7 @@ def get_year(args, books):
     sortedYears = sorted(args.year)
     while i < (len(args.year) - 1):
         for book in books:
-            if book.year >= sortedYears[i] and book.year <= sortedYears[i + 1]:
+            if int(book.year) >= sortedYears[i] and int(book.year) <= sortedYears[i + 1]:
                 ylist.append(book)
         i += 2
 
