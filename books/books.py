@@ -3,7 +3,7 @@ Author: Tianyi Lu, Victor Huang
 Description: Gets arguments from users and then searchs for books matching user argument input
 Date: 2021-01-15 09:10:29
 LastEditors: Tianyi Lu
-LastEditTime: 2021-01-15 10:13:53
+LastEditTime: 2021-01-15 10:49:11
 '''
 
 import argparse
@@ -16,7 +16,7 @@ class Book():
         self.author = author
 
     def __repr__(self):
-        return ", ".join([self.title, self.year, self.author])
+        return ', '.join([self.title, self.year, self.author])
 
 def get_arguments():
     parser = argparse.ArgumentParser(description='Enter some information to start looking for books')
@@ -50,20 +50,52 @@ def read_file():
     return books
 
 def get_title(args, books):
+    if not args.title:
+        return None
+
     tlist = []
     for arg in args.title:
         for book in books:
-            if arg in book.title:
-                tlist.append(book)
-    return set(tlist)                
-
+            if arg.lower() in book.title.lower():
+                titles = [book.title for book in tlist]
+                if not book.title in titles:
+                    tlist.append(book)
+    return tlist              
         
 
 def get_author(args, books):
-    pass
+    if not args.author:
+        return None
+
+    adict = {}
+    for arg in args.author:
+        for book in books:
+            if arg.lower() in book.author.lower():
+                if not book.author in adict.keys():
+                    adict[book.author] = []
+
+    for book in books:
+        if book.author in adict.keys():
+            titles = [b.title for b in adict[book.author]]
+            if not book.title in titles:
+                adict[book.author].append(book)
+    return adict
 
 def get_year(args):
-    pass
+    if not args.year:
+        ylist = None
+
+    if (len(args.author) % 2) == 1:
+        args.author.pop()
+
+    i = 0
+    while i < (len(args.year) - 1):
+        for book in books:
+            book.year.lower():
+                authors = [book.author for book in alist]
+                if not book.author in authors:
+                    alist.append(book)
+    return alist  
 
 def combine(tlist, alist, ylist):
     pass
@@ -71,7 +103,9 @@ def combine(tlist, alist, ylist):
 if __name__ == "__main__":
     args = get_arguments()
     books = read_file()
-    for book in books:
-        
-        print(book)
+    adict = get_author(args, books)
+    for author in adict.keys():
+        print(author+": ")
+        for book in adict[author]:
+            print(book)
     
