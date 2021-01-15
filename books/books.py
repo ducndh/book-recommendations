@@ -3,7 +3,7 @@ Author: Tianyi Lu, Victor Huang
 Description: Gets arguments from users and then searchs for books matching user argument input
 Date: 2021-01-15 09:10:29
 LastEditors: Tianyi Lu
-LastEditTime: 2021-01-15 09:57:35
+LastEditTime: 2021-01-15 10:12:32
 '''
 
 import argparse
@@ -64,4 +64,5 @@ def combine(tlist, alist, ylist):
 if __name__ == "__main__":
     books = read_file()
     for book in books:
+        
         print(book)
