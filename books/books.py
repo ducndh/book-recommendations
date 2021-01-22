@@ -3,7 +3,7 @@ Author: Tianyi Lu, Victor Huang
 Description: Gets arguments from users and then searchs for books matching user argument input
 Date: 2021-01-15 09:10:29
 Revised By: Tianyi Lu
-LastEditTime: 2021-01-22 16:05:25
+LastEditTime: 2021-01-22 16:09:38
 '''
 
 import argparse
@@ -142,8 +142,7 @@ def get_intersect_list(lst1, lst2):
 
 def combine_results(title_book_list, author_book_dict, year_book_list):
     """
-    Combine the results from get_title, get_year, and get_author. Print out the
-    formated results
+    Combine the results from get_title, get_year, and get_author.
     :param title_book_list: A list of book objects from get_title
     :param author_book_dict: A dictionary of author and book objects from get_author
     :param year_book_list: A list of book objects from get_year
