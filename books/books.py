@@ -3,7 +3,7 @@ Author: Tianyi Lu, Victor Huang
 Description: Gets arguments from users and then searchs for books matching user argument input
 Date: 2021-01-15 09:10:29
 Revised By: Tianyi Lu
-LastEditTime: 2021-01-22 15:56:47
+LastEditTime: 2021-01-22 16:05:25
 '''
 
 import argparse
@@ -120,10 +120,10 @@ def get_books_by_year(args, books):
         
     i = 0
     year_book_list = []
-    sortedYears = sorted(args.year)
+    sorted_years = sorted(args.year)
     while i < (len(args.year) - 1):
         for book in books:
-            if int(book.year) >= sortedYears[i] and int(book.year) <= sortedYears[i + 1]:
+            if int(book.year) >= sorted_years[i] and int(book.year) <= sorted_years[i + 1]:
                 if not book in year_book_list:
                     year_book_list.append(book)
         i += 2
@@ -140,13 +140,14 @@ def get_intersect_list(lst1, lst2):
     lst3 = [value for value in lst1 if value in lst2] 
     return lst3
 
-def combine_print_results(title_book_list, author_book_dict, year_book_list):
+def combine_results(title_book_list, author_book_dict, year_book_list):
     """
     Combine the results from get_title, get_year, and get_author. Print out the
     formated results
     :param title_book_list: A list of book objects from get_title
     :param author_book_dict: A dictionary of author and book objects from get_author
     :param year_book_list: A list of book objects from get_year
+    :return: A list or dictionary depending on the arguments
     """
     # Intersection list of title_book_list and year_book_list
     title_year_list = []
@@ -174,10 +175,10 @@ def combine_print_results(title_book_list, author_book_dict, year_book_list):
             if not only_author_book_dict:
                 author_book_dict[author] = get_intersect_list(books, title_year_list)
                 
-        print_dict_result(author_book_dict)
+        return author_book_dict
                 
     else:
-        print_list_result(title_year_list)
+        return title_year_list
 
 def print_dict_result(author_book_dict):
     """
@@ -209,7 +210,12 @@ def main():
     title_book_list = get_books_by_title(args, books)
     year_book_list = get_books_by_year(args, books)
     author_book_dict = get_books_by_author(args, books)
-    combine_print_results(title_book_list, author_book_dict, year_book_list)
+    search_result = combine_results(title_book_list, author_book_dict, year_book_list)
+
+    if type(search_result) is dict:
+        print_dict_result(search_result)
+    else:
+        print_list_result(search_result)
 
 if __name__ == "__main__":
     main()
