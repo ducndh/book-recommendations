@@ -3,7 +3,7 @@ Author: Aiden, Sky
 Description: COnverting original csv files
 Date: 2021-01-26 18:36:06
 LastEditors: Tianyi Lu
-LastEditTime: 2021-01-26 20:55:38
+LastEditTime: 2021-01-26 21:06:17
 '''
 
 import csv
@@ -45,10 +45,15 @@ def write_games_csv(rows):
 def write_cities_csv(rows):
     write_from_athlete_events('cities.csv', [11], rows)
 
+def write_events_csv(rows):
+    write_from_athlete_events('events.csv', [13,12], rows)
+
+
 
 if __name__ == "__main__":
     rows = read_athlete_events()
     write_athletes_csv(rows)
     write_games_csv(rows)
     write_cities_csv(rows)
+    write_events_csv(rows)
             
