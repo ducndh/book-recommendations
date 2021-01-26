@@ -13,8 +13,8 @@ CREATE TABLE athletes (
     id SERIAL,
     full_name text,
     sex text,
-    height integer,
-    weights integer
+    height float,
+    weights float
 );
 
 CREATE TABLE games (
@@ -66,3 +66,9 @@ CREATE TABLE athletes_nocs (
     athlete_id integer,
     noc_id integer
 );
+
+\copy athletes from 'athletes.csv' DELIMITER ',' CSV NULL AS 'NA'
+\copy games from 'games.csv' DELIMITER ',' CSV NULL AS 'NA'
+\copy events from 'events.csv' DELIMITER ',' CSV NULL AS 'NA'
+\copy cities from 'cities.csv' DELIMITER ',' CSV NULL AS 'NA'
+\copy nocs from 'nocs.csv' DELIMITER ',' CSV NULL AS ''
