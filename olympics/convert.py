@@ -3,7 +3,7 @@ Author: Aiden, Sky
 Description: COnverting original csv files
 Date: 2021-01-26 18:36:06
 LastEditors: Tianyi Lu
-LastEditTime: 2021-01-26 22:22:19
+LastEditTime: 2021-01-26 22:28:20
 '''
 
 import csv
@@ -61,6 +61,42 @@ def write_cities_csv(rows):
 def write_events_csv(rows):
     write_from_athlete_events('events.csv', [13,12], rows)
 
+def write_game_city_csv(rows):
+    write_game_city("game_city.csv", rows)
+
+def write_game_city(filename,rows):
+    i =0
+    game_rows = read_rows("game")
+    city_rows = read_rows("city")
+    with open(filename, 'w') as csv_file:
+        csv_writer = csv.writer(csv_file, delimiter=',')
+        uniqueList = []
+        for row in rows:
+            i+= 1
+            #print(i)
+            if row[8]+row[11] not in uniqueList:
+                uniqueList.append(row[8] + row[11])
+                csv_writer.writerow([get_id_from_table(row[8], game_rows) ,get_id_from_table(row[11], city_rows)])
+
+def read_rows(file_category):
+    rows = []
+    if file_category == "game":
+        filename = 'games.csv'
+    if file_category == "city":
+        filename = 'cities.csv'
+    with open(filename, 'r') as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        for row in csv_reader:
+            rows.append(row)
+    return rows
+    
+
+def get_id_from_table(object_name, rows):
+    for row in rows:
+        if object_name in row:
+            print(row)
+            
+            return row[0]
 
 def get_id(table_name, key):
     filename = table_name+'.csv'
@@ -73,16 +109,6 @@ def get_id(table_name, key):
         return None
         
 def write_medals_csv(athletes_dict, game_dict, event_dict, rows):
-    with open('medals.csv', 'w') as csv_file:
-        csv_writer = csv.writer(csv_file, delimiter=',')
-        for i, row in enumerate(rows):
-            row_content = [athletes_dict[row[1]],
-                           game_dict[row[8]],
-                           event_dict[row[13]],
-                           row[14]]
-            csv_writer.writerow([i]+row_content)
-
-def write_games_cities_csv(game_dict, city_dict, rows):
     with open('medals.csv', 'w') as csv_file:
         csv_writer = csv.writer(csv_file, delimiter=',')
         for i, row in enumerate(rows):
