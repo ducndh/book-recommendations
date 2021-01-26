@@ -77,9 +77,3 @@ CREATE TABLE athletes_nocs (
 \copy ages from 'ages.csv' DELIMITER ',' CSV NULL AS 'NA'
 \copy medals from 'medals.csv' DELIMITER ',' CSV NULL AS ''
 
-/*This is the code for displaying game_cities */
-SELECT games.games, cities.city_name
-FROM games, cities, games_cities
-WHERE games.id = games_cities.game_id
-AND cities.id = games_cities.city_id;
-
