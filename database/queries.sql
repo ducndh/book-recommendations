@@ -1,3 +1,5 @@
+-- Author: Aiden Chang, Sky Lu
+
 SELECT nocs.noc_name 
 FROM nocs
 ORDER BY nocs.noc_name;

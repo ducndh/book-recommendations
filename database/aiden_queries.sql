@@ -1,10 +1,4 @@
-'''
-Author: Aiden, Sky
-Description: COnverting original csv files
-Date: 2021-01-27 00:24:06
-LastEditors: Aiden Chang
-LastEditTime: 2021-01-27 00:24:17
-'''
+-- Author: Aiden Chang, Sky Lu
 
 DROP TABLE IF EXISTS athletes;
 DROP TABLE IF EXISTS games;

@@ -1,3 +1,5 @@
+-- Author: Aiden Chang, Sky Lu
+
 DROP TABLE IF EXISTS athletes;
 DROP TABLE IF EXISTS games;
 DROP TABLE IF EXISTS cities;
