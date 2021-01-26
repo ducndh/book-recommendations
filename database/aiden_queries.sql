@@ -96,4 +96,5 @@ SELECT games.game_year, athletes.full_name, medals.medal, games.games, events.ev
 FROM events, games, medals, athletes
 WHERE athletes.full_name = 'Gregory Efthimios "Greg" Louganis'
 AND athletes.id = medals.athlete_id
+AND games.id = 
 ORDER BY games.game_year;

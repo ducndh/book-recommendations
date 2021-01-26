@@ -23,4 +23,4 @@ AND athletes.id = athletes_nocs.athlete_id
 AND nocs.id = athletes_nocs.noc_id
 AND medals.medal = 'Gold'
 GROUP BY nocs.noc_name
-ORDER BY COUNT(medals.medal) DESC
+ORDER BY COUNT(medals.medal) DESC;
