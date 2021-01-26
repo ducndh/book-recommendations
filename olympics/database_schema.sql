@@ -66,4 +66,3 @@ CREATE TABLE athletes_nocs (
     athlete_id integer,
     noc_id integer
 );
-
