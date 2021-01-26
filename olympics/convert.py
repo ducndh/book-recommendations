@@ -48,6 +48,42 @@ def write_cities_csv(rows):
 def write_events_csv(rows):
     write_from_athlete_events('events.csv', [13,12], rows)
 
+def write_game_city_csv(rows):
+    write_game_city("game_city.csv", rows)
+
+def write_game_city(filename,rows):
+    i =0
+    game_rows = read_rows("game")
+    city_rows = read_rows("city")
+    with open(filename, 'w') as csv_file:
+        csv_writer = csv.writer(csv_file, delimiter=',')
+        uniqueList = []
+        for row in rows:
+            i+= 1
+            #print(i)
+            if row[8]+row[11] not in uniqueList:
+                uniqueList.append(row[8] + row[11])
+                csv_writer.writerow([get_id_from_table(row[8], game_rows) ,get_id_from_table(row[11], city_rows)])
+
+def read_rows(file_category):
+    rows = []
+    if file_category == "game":
+        filename = 'games.csv'
+    if file_category == "city":
+        filename = 'cities.csv'
+    with open(filename, 'r') as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        for row in csv_reader:
+            rows.append(row)
+    return rows
+    
+
+def get_id_from_table(object_name, rows):
+    for row in rows:
+        if object_name in row:
+            print(row)
+            
+            return row[0]
 
 
 if __name__ == "__main__":
@@ -56,4 +92,5 @@ if __name__ == "__main__":
     write_games_csv(rows)
     write_cities_csv(rows)
     write_events_csv(rows)
+    write_game_city_csv(rows)
             
