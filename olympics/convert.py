@@ -3,7 +3,7 @@ Author: Aiden, Sky
 Description: COnverting original csv files
 Date: 2021-01-26 18:36:06
 LastEditors: Tianyi Lu
-LastEditTime: 2021-01-26 22:53:34
+LastEditTime: 2021-01-26 23:15:13
 '''
 
 import csv
@@ -63,38 +63,41 @@ def write_events_csv(rows):
 
 
 def write_game_city_csv(game_dict, city_dict, filename, rows):
-    i =0
-    game_rows = read_rows("game")
-    city_rows = read_rows("city")
     with open(filename, 'w') as csv_file:
         csv_writer = csv.writer(csv_file, delimiter=',')
-        uniqueList = []
+        uniqueList = {}
         for row in rows:
-            i+= 1
-            #print(i)
             if row[8]+row[11] not in uniqueList:
-                uniqueList.append(row[8] + row[11])
+                uniqueList[row[8]+row[11]] = 0
                 csv_writer.writerow([game_dict[row[8]], city_dict[row[11]]])
 
-def read_rows(file_category):
-    rows = []
-    if file_category == "game":
-        filename = 'games.csv'
-    if file_category == "city":
-        filename = 'cities.csv'
-    with open(filename, 'r') as csv_file:
-        csv_reader = csv.reader(csv_file, delimiter=',')
-        for row in csv_reader:
-            rows.append(row)
-    return rows
-    
+def write_age_csv(athlete_dict, game_dict, filename, rows):
+    i = 0
+    with open(filename, 'w') as csv_file:
+        csv_writer = csv.writer(csv_file, delimiter=',')
+        uniqueList = {}
+        for row in rows:
+            #print(i)
+            if row[1]+row[8] not in uniqueList:
+                uniqueList[row[1]+row[8]] = 0
+                try:
+                    csv_writer.writerow([i, athlete_dict[row[1]], game_dict[row[8]], row[3]])
+                except:
+                    continue
+                i += 1
+                
 
-# def get_id_from_table(object_name, rows):
-#     for row in rows:
-#         if object_name in row:
-#             print(row)
-            
-#             return row[0]
+def write_athlete_noc_csv(athlete_dict, noc_dict, filename, rows):
+    with open(filename, 'w') as csv_file:
+        csv_writer = csv.writer(csv_file, delimiter=',')
+        uniqueList = {}
+        for row in rows:
+            if row[1]+row[7] not in uniqueList:
+                uniqueList[row[1]+row[7]] = 0
+                try:
+                    csv_writer.writerow([athlete_dict[row[1]], noc_dict[row[7]]])
+                except:
+                    continue
 
 def get_id(table_name, key):
     filename = table_name+'.csv'
@@ -136,6 +139,8 @@ if __name__ == "__main__":
     write_medals_csv(athlete_dict, game_dict, event_dict, athlete_rows)
 
     write_game_city_csv(game_dict, city_dict, 'games_cities.csv', athlete_rows)
+    write_athlete_noc_csv(athlete_dict, noc_dict, 'athletes_nocs.csv', athlete_rows)
+    write_age_csv(athlete_dict, game_dict, 'ages.csv', athlete_rows)
 
     # print(get_id('athletes', 'zzet nce'))
 
