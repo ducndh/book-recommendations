@@ -94,6 +94,22 @@ CREATE TABLE games (
 
 SELECT games.game_year, athletes.full_name, medals.medal, games.games, events.event_name, events.sport
 FROM events, games, medals, athletes
-WHERE athletes.full_name = 'Gregory Efthimios "Greg" Louganis'
+WHERE athletes.full_name LIKE '%Greg%%Louganis%'
+AND games.id = medals.game_id
+AND events.id = medals.event_id
 AND athletes.id = medals.athlete_id
 ORDER BY games.game_year;
+
+/*
+Fourth Task
+List all the NOCs and the number of gold medals they have won, in decreasing order of the number of gold medals.
+*/
+
+SELECT nocs.noc_name, COUNT(medals.medal)
+FROM nocs, athletes, medals, athletes_nocs
+WHERE medals.medal = 'Gold'
+AND medals.athlete_id = athletes.id
+AND nocs.id = athletes_nocs.noc_id
+AND athletes.id = athletes_nocs.athlete_id
+GROUP BY nocs.noc_name
+ORDER BY COUNT(medals.medal) DESC;
