@@ -40,13 +40,36 @@
 -- AND athletes.full_name LIKE '%Greg%%Louganis%'
 -- ORDER BY games.game_year;
 
-SELECT nocs.noc_name, COUNT(medals.medal)
-FROM nocs, athletes, medals, athletes_nocs, games
+-- SELECT nocs.noc_name, COUNT(medals.medal)
+-- FROM nocs, athletes, medals, athletes_nocs, games
+-- WHERE athletes.id = medals.athlete_id
+-- AND games.id = medals.game_id
+-- AND athletes.id = athletes_nocs.athlete_id
+-- AND nocs.id = athletes_nocs.noc_id
+-- AND medals.medal = 'Gold'
+-- AND games.game_year = '2018'
+-- GROUP BY nocs.noc_name
+-- ORDER BY COUNT(medals.medal) DESC;
+
+-- SELECT DISTINCT games.game_year, games.season, cities.city_name
+-- FROM games, cities, games_cities
+-- WHERE games.id = games_cities.game_id
+-- AND cities.id = games_cities.city_id
+-- ORDER BY games.game_year;
+
+-- SELECT DISTINCT nocs.noc_name, nocs.region
+-- FROM nocs
+-- ORDER BY nocs.noc_name;
+
+SELECT DISTINCT athletes.id, athletes.full_name, athletes.sex, 
+events.event_name, medals.medal
+FROM athletes, events, medals, games, athletes_nocs, nocs
 WHERE athletes.id = medals.athlete_id
+AND events.id = medals.event_id
 AND games.id = medals.game_id
 AND athletes.id = athletes_nocs.athlete_id
 AND nocs.id = athletes_nocs.noc_id
-AND medals.medal = 'Gold'
-AND games.game_year = '2018'
-GROUP BY nocs.noc_name
-ORDER BY COUNT(medals.medal) DESC;
+AND medals.medal IS NOT NULL
+AND games.id = 23
+AND nocs.noc_name = 'USA'
+ORDER BY athletes.full_name;

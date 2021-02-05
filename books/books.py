@@ -3,7 +3,7 @@ Author: Tianyi Lu, Victor Huang
 Description: Gets arguments from users and then searchs for books matching user argument input
 Date: 2021-01-15 09:10:29
 Revised By: Tianyi Lu
-LastEditTime: 2021-01-22 16:09:38
+LastEditTime: 2021-02-01 19:03:23
 '''
 
 import argparse
