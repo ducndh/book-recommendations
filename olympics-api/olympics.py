@@ -3,7 +3,7 @@ Author: Tianyi Lu
 Description: Postgresql command-line interface
 Date: 2021-01-29 18:05:08
 LastEditors: Tianyi Lu
-LastEditTime: 2021-02-05 15:45:09
+LastEditTime: 2021-02-05 21:00:26
 '''
 import psycopg2
 import argparse
