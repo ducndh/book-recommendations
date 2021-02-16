@@ -1,0 +1,48 @@
+﻿Authors: Duc, Sky
+
+
+Dataset: Data about books on Goodreads website including ratings, author, types, etc.
+Download: https://www.kaggle.com/austinreese/goodreads-books/download
+
+
+User Story 1:
+Book readers can discover new books they’re interested in to read by getting a list of highly rated books from different categories.
+
+
+Implementation:
+We will have a bunch of popular categories at the home page for the user to choose from and then we would give them option to either choose books by published date, number of reviews and the rating scores. The default would just be by alphabetical. The abstracts of books will be provided in the book list so that users can decide whether they like the content or not before clicking on individual links for books.
+
+
+We will also recommend new books based on the books they already read. By looking at the distribution of tags in their “bookshelf”, we will push books with similar tags to the users.
+
+
+User Story 2:
+Book readers want to search for a specific author or a key word in the title which they may not remember exactly to get more information about that author or book.
+
+
+Implementation:
+We will have a single search bar in the header. It will search for book’s title by default and users can open the advanced search option that contains these specific fields so they can add the information to these fields and the function would query based on all the fields that contain input. 
+
+
+When searching for books, we expect that we can have a picture of the book’s cover and all the relevant information at the start of the page such as authors, categories, ratings and awards. We hope that we can have links to other website to for the readers to immediately order the books. When clicking on the rating, it would get specific information about how many ratings does the book have. 
+
+
+When searching for authors, we hope that we could include a picture of the author at the top of the page and some small pictures of the books that they wrote on a horizontal scroll list. 
+
+
+User Story 3:
+Bookshop owners want to search for popular newly published books to purchase for their stores.
+
+
+Implementation:
+We will develop a trending books page that shows books with the highest rating over the past few days/weeks/months along with publisher information.
+
+
+
+
+User Story 4:
+Books readers find a book really interesting and wants to read more books that come from the same authors, the same series, win the same award or are recommended by Goodreads algorithm. 
+
+
+Implementation: 
+These informations would be shown on the book’s page and by clicking on the highlighted categories, the author’s name, awards that the books have won or the option “Similar books recommended by Goodreads”, the user would be redirected to the page of their choice.
