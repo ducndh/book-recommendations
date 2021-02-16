@@ -3,7 +3,7 @@ Author: Tianyi Lu
 Description: Olympics API
 Date: 2021-02-05 13:49:43
 LastEditors: Tianyi Lu
-LastEditTime: 2021-02-05 16:12:49
+LastEditTime: 2021-02-11 05:37:24
 '''
 
 import flask
@@ -36,8 +36,7 @@ def nocs():
 @app.route('/medalists/games/<games_id>')
 def medalists(games_id):
     noc = flask.request.args.get('noc') or None
-    key_list = ['athlete_id', 'athlete_name', 'athlete_sex',
-                'sport', 'event', 'medal']
+    key_list = ['athlete_id', 'athlete_name', 'athlete_sex', 'event', 'medal']
     medalists_list = olympics_object.get_medalists_by_games(games_id, noc)
     result_list = list_to_dict(key_list, medalists_list)
     return json.dumps(result_list)
