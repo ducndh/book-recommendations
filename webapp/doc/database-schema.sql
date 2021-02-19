@@ -1,27 +1,31 @@
-CREATE TABLE artists (
-    artist_id int,
-    name text,
-    birth_year int,
-    death_year int,
-    gender text,
-    nationality text,
-    artist_bio text,
-);
+--Authors: Duc, Sky
 
-CREATE TABLE book (
-    id int,
+DROP TABLE IF EXISTS books;
+DROP TABLE IF EXISTS series;
+DROP TABLE IF EXISTS authors;
+DROP TABLE IF EXISTS authors_books;
+DROP TABLE IF EXISTS genres;
+DROP TABLE IF EXISTS genres_votes;
+DROP TABLE IF EXISTS awards;
+DROP TABLE IF EXISTS books_awards;
+DROP TABLE IF EXISTS recommendations;
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS books_users;
+DROP TABLE IF EXISTS reviews;
+DROP TABLE IF EXISTS ratings;
+
+
+CREATE TABLE books (
+    id SERIAL,
     series_id int,
     title text,
     cover_link text,
     rating_count int,
     review_count int,
-    average_rating float,
     number_of_page int,
     date_published date,
     publisher text,
-    original_title text,
     isbn int,
-    isbn13 int,
     settings text,
     characters text,
     amazon_link text,
@@ -35,8 +39,7 @@ CREATE TABLE series (
 
 CREATE TABLE authors (
     id SERIAL,
-    last_name text,
-    first_name text,
+    full_name text,
     birth_place text,
     genre text,
 );
@@ -92,10 +95,9 @@ CREATE TABLE reviews (
     review_time date,
 );
 
-CREATE TABLE reviews (
+CREATE TABLE ratings (
     id SERIAL,
     user_id int,
     book_id int,
-    rating int,
-    rating_time date,
+    rating int, --(1-5)
 );

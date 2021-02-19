@@ -1,0 +1,107 @@
+Author: Duc, Sky
+
+REQUEST: 
+/books/<id>
+
+RESPONSE: a JSON dictionary representing one book that have the following fields.
+
+	title -- (string) the title of the book.
+	series_name -- (string) the name of the series this book belongs to. 
+	description -- (string) a brief introduction to the book.
+	cover_link -- (string) the URL link for the cover picture.
+	rating_count -- (integer) number of ratings this book received.
+	review_count -- (integer) number of reviews this book received.
+	number_of_page -- (integer) number of pages this book has.
+	date_published -- (string) publish date for the book
+	publisher -- (string) publisher of the book
+	isbn -- (integer)the isbn number for the book
+	settings -- (string) the background settings of the book.
+	characters -- (string) major characters in the book
+	amazon-link -- (string) the link on Amazon to purchase the book.
+  
+
+REQUEST:
+/books/search?title={title_key}&genre={genre_key}&date={date_key}&isbn={isbn_key}&publisher={publisher_key}&charactors={charactors_key}
+
+RESPONSE: a JSON list of dictionaries, each of which represents one book that match the search constraints. Each book dictionary will have the following fields.
+
+	title -- (string) the title of the book.
+	series_name -- (string) the name of the series this book belongs to. 
+	description -- (string) a brief introduction to the book.
+	cover_link -- (string) the URL link for the cover picture.
+	rating_count -- (integer) number of ratings this book received.
+	review_count -- (integer) number of reviews this book received.
+	number_of_page -- (integer) number of pages this book has.
+	date_published -- (string) publish date for the book
+	publisher -- (string) publisher of the book
+	isbn -- (integer)the isbn number for the book
+	settings -- (string) the background settings of the book.
+	characters -- (string) major characters in the book
+	amazon-link -- (string) the link on Amazon to purchase the book.
+
+REQUEST:
+/books/reviews/<id>
+
+RESPONSE: a JSON list of dictionaries, each of which represents one review for the book specified by <id>. Each review will have the following fields.
+
+	user_id -- (integer) the id of the user who made the review
+	content -- (string) the content of the review
+
+REQUEST:
+/books/ratings/<id>
+
+RESPONSE: a JSON dictionary representing ratings of the book whose ID matches the specified ID. This dictionary will have the following fields.
+
+	one_star_rating -- (integer) the number of one star rating
+	two_stars_rating -- (integer) the number of two stars rating
+	three_stars_rating -- (integer) the number of three stars rating
+	four_stars_rating -- (integer) the number of four stars rating
+	five_stars_rating -- (integer) the number of five stars rating
+	Average_rating -- (float) the average rating of the book that is calculated using the number of ratings
+
+
+REQUEST:
+/books/recommendation/<id>
+
+RESPONSE: a JSON dictionary containing a list of recommended books id derived from a book whose ID matches the specified ID. This dictionary will have the following fields.
+
+	recommendations -- (list) a list of books ID that are similar to the specified book based on goodreads recommendation. 
+
+
+
+
+REQUEST:
+/books/genre/<id>
+
+RESPONSE: a JSON list of dictionary, each of which represents one type of genre for the book specified by <id>. Each genre will have the following fields.
+
+	genre_name -- (string) a genre that the book belongs to.
+	vote --- (integer) the number of votes for this genre
+
+
+REQUEST:
+/authors/<id>
+
+RESPONSE: a JSON dictionary represent one author whose ID matches the specified ID. This dictionary will have the following fields.
+
+	name -- (string) the name of the author 
+	birth_place -- (string) the name of the place that the author is born
+	genre -- (string) the genres that the author wrote
+	books_id --(list) the list of books ID that the author wrote
+
+
+REQUEST: 
+/authors/search?name={name_key}
+
+RESPONSE: a JSON list of dictionaries, each of which represents one author whose name contains the search key. Each author dictionary will have the following fields.
+
+	name -- (string) the name of the author 
+	birth_place -- (string) the name of the place that the author is born
+	genre -- (string) the genres that the author wrote
+
+REQUEST:
+/user/bookshelf
+
+RESPONSE: a JSON dictionary that contains the id for all the books the current user added to the bookshelf.
+
+	books_id -- (list) a list of book IDs.
