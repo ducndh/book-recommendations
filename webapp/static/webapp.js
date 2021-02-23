@@ -3,14 +3,7 @@
  * @Description: 
  * @Date: 2021-02-23 20:20:40
  * @LastEditors: Tianyi Lu
- * @LastEditTime: 2021-02-23 22:36:56
- */
-/*
- * webapp.js
- * Jeff Ondich
- * 6 November 2020
- *
- * A little bit of Javascript for the tiny web app sample for CS257.
+ * @LastEditTime: 2021-02-23 22:42:48
  */
 
 window.onload = initialize;
