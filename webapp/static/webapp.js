@@ -9,9 +9,9 @@
 window.onload = initialize;
 
 function initialize() {
-    var element = document.getElementById('search_button');
+    var element = document.getElementById('basic_search');
     if (element) {
-        element.onclick = onCatsButton;
+        element.onclick = onSearchButton;
     }
 }
 
@@ -22,14 +22,14 @@ function getAPIBaseURL() {
 
 function onSearchButton() {
     var parameters = ""
-    var basic_search = document.getElementById('basic_search')
-    if (basic_search) {
-        if (parameters) {
-            parameters += "&"
-        }
-        parameters += "title=" + basic_search.value;
-    var url = getAPIBaseURL() + '/books/' + parameters;
-
+    // var basic_search = document.getElementById('basic_search')
+    // if (basic_search) {
+    //     if (parameters) {
+    //         parameters += "&"
+    //     }
+    //     parameters += "title=" + basic_search.value;
+    // var url = getAPIBaseURL() + '/books/' + parameters;
+    var url = getAPIBaseURL() + '/books/';
     fetch(url, {method: 'get'})
 
     .then((response) => response.json())
@@ -40,7 +40,7 @@ function onSearchButton() {
             var book = books[k];
             listBody += '<li>' + book['title']
                       + ', ' + book['cover_link']
-                      + '-' + book['death_year']
+                      + ',' + book['date_published']
                       + ', ' + book['description'];
                       + '</li>\n';
         }
