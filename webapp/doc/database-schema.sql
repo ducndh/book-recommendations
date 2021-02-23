@@ -14,18 +14,18 @@ DROP TABLE IF EXISTS books_users;
 DROP TABLE IF EXISTS reviews;
 DROP TABLE IF EXISTS ratings;
 
-
+-- 0, 1, 4, 7, 8, 15, 16, 17, 21, 23, 24, 26, 30
 CREATE TABLE books (
     id SERIAL,
-    series_id int,
+    -- series_id int,  (not included for end-to-end assignment)
     title text,
     cover_link text,
     rating_count int,
     review_count int,
     number_of_page int,
-    date_published date,
+    date_published text,
     publisher text,
-    isbn int,
+    isbn13 text,
     settings text,
     characters text,
     amazon_link text,
@@ -101,3 +101,5 @@ CREATE TABLE ratings (
     book_id int,
     rating int --(1-5)
 );
+
+\copy books from 'books.csv' DELIMITER ',' CSV NULL AS ''
