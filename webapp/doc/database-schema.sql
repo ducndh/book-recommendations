@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS genres_votes;
 DROP TABLE IF EXISTS awards;
 DROP TABLE IF EXISTS books_awards;
 DROP TABLE IF EXISTS recommendations;
-DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS books_users;
 DROP TABLE IF EXISTS reviews;
 DROP TABLE IF EXISTS ratings;
@@ -29,62 +29,62 @@ CREATE TABLE books (
     settings text,
     characters text,
     amazon_link text,
-    descriptions text,
+    descriptions text
 );
 
 CREATE TABLE series (
     id SERIAL,
-    series text,
+    series text
 );
 
 CREATE TABLE authors (
     id SERIAL,
     full_name text,
     birth_place text,
-    genre text,
+    genre text
 );
 
 CREATE TABLE authors_books (
     author_id int,
-    book_id int,
+    book_id int
 );
 
 CREATE TABLE genres (
     id SERIAL,
-    genre text,
+    genre text
 );
 
 CREATE TABLE genres_votes (
     book_id int,
     genre_id int,
-    vote int, 
+    vote int
 );
 
 
 CREATE TABLE awards (
     id SERIAL,
-    award text,
+    award text
 );
 
 CREATE TABLE books_awards (
     book_id int,
     award_id int,
-    year int,
+    year int
 );
 
 CREATE TABLE recommendations (
     current_book_id int,
-    recommended_book_id text,
+    recommended_book_id text
 );
 
 CREATE TABLE users (
-    user text,
-    password_hash int,
+    username text,
+    password_hash int
 );
 
 CREATE TABLE books_users (
     book_id int,
-    user_id int,
+    user_id int
 );
 
 CREATE TABLE reviews (
@@ -92,12 +92,12 @@ CREATE TABLE reviews (
     user_id int,
     book_id int,
     content text,
-    review_time date,
+    review_time date
 );
 
 CREATE TABLE ratings (
     id SERIAL,
     user_id int,
     book_id int,
-    rating int, --(1-5)
+    rating int --(1-5)
 );
