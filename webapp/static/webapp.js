@@ -22,68 +22,12 @@ function getAPIBaseURL() {
 
 function onSearchButton() {
     var parameters = ""
-    var artwork_title = document.getElementById('artwork-title')
-    if (artwork_title) {
+    var basic_search = document.getElementById('basic_search')
+    if (basic_search) {
         if (parameters) {
             parameters += "&"
         }
-        parameters += "artwork_title=" + artwork_title.value;
-    }
-    var min_year = document.getElementById('artwork-minyear')
-    if (min_year) {
-        if (parameters) {
-            parameters += "&"
-        }
-        parameters += "min_year=" + min_year.value;
-    }
-    var max_year = document.getElementById('artist-maxyear')
-    if (max_year) {
-        if (parameters) {
-            parameters += "&"
-        }
-        parameters += "max_year=" + max_year.value;
-    }
-    var min_height = document.getElementById('minheight')
-    if (min_height) {
-        if (parameters) {
-            parameters += "&"
-        }
-        parameters += "min_height=" + min_height.value;
-    }
-    var max_height = document.getElementById('maxheight')
-    if (max_height) {
-        if (parameters) {
-            parameters += "&"
-        }
-        parameters += "max_height=" + max_height.value;
-    }
-    var min_width = document.getElementById('minwidth')
-    if (min_width) {
-        if (parameters) {
-            parameters += "&"
-        }
-        parameters += "min_width=" + min_width.value;
-    }
-    var max_width = document.getElementById('maxwidth')
-    if (max_width) {
-        if (parameters) {
-            parameters += "&"
-        }
-        parameters += "max_width=" + max_width.value;
-    }
-    var classification = document.getElementById('classification')
-    if (classification) {
-        if (parameters) {
-            parameters += "&"
-        }
-        parameters += "classification=" + classification.value;
-    }
-    var sort_by = document.getElementById('sort-artworks')
-    if (sort_by) {
-        if (parameters) {
-            parameters += "&"
-        }
-        parameters += "sort_by=" + sort_by.value;
+        parameters += "title=" + basic_search.value;
     var url = getAPIBaseURL() + '/books/' + parameters;
 
     fetch(url, {method: 'get'})
@@ -94,8 +38,8 @@ function onSearchButton() {
         var listBody = '';
         for (var k = 0; k < books.length; k++) {
             var book = books[k];
-            listBody += '<li>' + book['name']
-                      + ', ' + book['birth_year']
+            listBody += '<li>' + book['title']
+                      + ', ' + book['cover_link']
                       + '-' + book['death_year']
                       + ', ' + book['description'];
                       + '</li>\n';
