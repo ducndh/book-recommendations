@@ -14,16 +14,31 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
     <title>CS 257: Software Design</title>
 </head>
-
 <body>
-    <h3>Tiny Web App Home Page</h3>
-
-    <p><button id="cats_button">Cats</button></p>
-    <p><button id="dogs_button">Dogs</button></p>
-
-    <ul id="animal_list"></ul>
-
-    <h3>One other page</h3>
-    <p>You can go to <a href="other.html">this other page</a>.</p>
+    <div class="topnav">
+        <a class="active" href="#home">BOOK MATCH</a>
+        <input type="text" placeholder="Search..">
+      </div>
+    <div class="today">
+        <h3>Books for today</h3>
+        <div class="column_today">
+            <img src="img_snow.jpg" alt="Snow" style="width:100%">
+          </div>
+          <div class="column_today">
+            <img src="img_forest.jpg" alt="Forest" style="width:100%">
+          </div>
+          <div class="column_today">
+            <img src="img_mountains.jpg" alt="Mountains" style="width:100%">
+          </div>
+          <div class="column_today">
+            <img src="img_mountains.jpg" alt="Mountains" style="width:100%">
+          </div>
+    </div>
+    <div class="genre">
+        <h3>Genres</h3>
+    </div>
+    <div class="trending">
+        <h3>Recently trending</h3>
+    </div>
 </body>
 </html>
