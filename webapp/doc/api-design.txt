@@ -1,23 +1,39 @@
 Author: Duc, Sky
 
-REQUEST: 
-/books/<id>
+REQUEST:
+/books
+RESPONSE: a JSON list of ten books, each is a dictionary containing the following fields.
 
-RESPONSE: a JSON dictionary representing one book that have the following fields.
-
+	id -- (integer) id of the book
 	title -- (string) the title of the book.
-	series_name -- (string) the name of the series this book belongs to. 
-	description -- (string) a brief introduction to the book.
 	cover_link -- (string) the URL link for the cover picture.
 	rating_count -- (integer) number of ratings this book received.
 	review_count -- (integer) number of reviews this book received.
 	number_of_page -- (integer) number of pages this book has.
 	date_published -- (string) publish date for the book
 	publisher -- (string) publisher of the book
-	isbn -- (integer)the isbn number for the book
+	isbn13 -- (string)the isbn13 number for the book
 	settings -- (string) the background settings of the book.
-	characters -- (string) major characters in the book
-	amazon-link -- (string) the link on Amazon to purchase the book.
+	characters -- (list of string) major characters in the book
+	amazon_link -- (string) the link on Amazon to purchase the book.
+	description -- (string) a brief introduction to the book.
+
+REQUEST: 
+/books/<id>
+RESPONSE: a JSON dictionary representing one book that have the following fields.
+
+	title -- (string) the title of the book.
+	cover_link -- (string) the URL link for the cover picture.
+	rating_count -- (integer) number of ratings this book received.
+	review_count -- (integer) number of reviews this book received.
+	number_of_page -- (integer) number of pages this book has.
+	date_published -- (string) publish date for the book
+	publisher -- (string) publisher of the book
+	isbn13 -- (string)the isbn13 number for the book
+	settings -- (string) the background settings of the book.
+	characters -- (list of string) major characters in the book
+	amazon_link -- (string) the link on Amazon to purchase the book.
+	description -- (string) a brief introduction to the book.
   
 
 REQUEST:
@@ -25,19 +41,19 @@ REQUEST:
 
 RESPONSE: a JSON list of dictionaries, each of which represents one book that match the search constraints. Each book dictionary will have the following fields.
 
+	id -- (integer) id of the book
 	title -- (string) the title of the book.
-	series_name -- (string) the name of the series this book belongs to. 
-	description -- (string) a brief introduction to the book.
 	cover_link -- (string) the URL link for the cover picture.
 	rating_count -- (integer) number of ratings this book received.
 	review_count -- (integer) number of reviews this book received.
 	number_of_page -- (integer) number of pages this book has.
 	date_published -- (string) publish date for the book
 	publisher -- (string) publisher of the book
-	isbn -- (integer)the isbn number for the book
+	isbn13 -- (string)the isbn13 number for the book
 	settings -- (string) the background settings of the book.
-	characters -- (string) major characters in the book
-	amazon-link -- (string) the link on Amazon to purchase the book.
+	characters -- (list of string) major characters in the book
+	amazon_link -- (string) the link on Amazon to purchase the book.
+	description -- (string) a brief introduction to the book.
 
 REQUEST:
 /books/reviews/<id>
