@@ -3,7 +3,7 @@ Author: Duc, Sky
 Description: 
 Date: 2021-02-23 17:41:16
 LastEditors: Tianyi Lu
-LastEditTime: 2021-02-23 19:54:11
+LastEditTime: 2021-02-23 22:01:26
 '''
 import sys
 import flask
@@ -52,9 +52,9 @@ def get_books():
                      'settings': row[9],
                      'characters': characters,
                      'amazon_link': row[11],
-                     'description': row[12]}
+                     'description': row[12] or '(No Description)'}
         book_lists.append(book_dict)
-        
+
     return json.dumps(book_lists)
 
 @api.route('/books/<id>') 

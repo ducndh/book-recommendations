@@ -1,6 +1,9 @@
 '''
-Author: Duc Nguyen, Tianyi Lu
-Description: unittest for api
+Author: Duc, Sky
+Description: 
+Date: 2021-02-19 20:03:49
+LastEditors: Tianyi Lu
+LastEditTime: 2021-02-23 22:40:35
 '''
 
 import unittest
@@ -36,7 +39,7 @@ class WebappApiTester(unittest.TestCase):
         r = requests.get(api_url, params={'title': 'world',
                                           'genre': 'fiction',
                                           'data': '1800-01-01'})
-        correct_json = [{'title': 'Hello World', ...}] # We will fill this out after database is populated
+        correct_json = [{'title': 'Hello World',}] # We will fill this out after database is populated
         self.assertCountEqual(r.json(), correct_json)
     
     def test_search_books_empty(self):
@@ -53,7 +56,7 @@ class WebappApiTester(unittest.TestCase):
     def test_get_ratings(self):
         api_url = '/'.join(self.url, 'books', 'ratings', 12)
         r = requests.get(api_url)
-        correct_json = [{'one_star_rating': 345, ...}]  #We will fill this out after database is populated
+        correct_json = [{'one_star_rating': 345}]  #We will fill this out after database is populated
         self.assertCountEqual(correct_json, r.json())
 
     def test_get_book_recommendation(self):
@@ -63,7 +66,7 @@ class WebappApiTester(unittest.TestCase):
         self.assertCountEqual(correct_json, r.json())
 
     def test_get_book_genre(self):
-        correct_json = [{'genre_name': 'sci-fi', vote: 179}, {'genre_name': 'horror', vote: 32}]
+        correct_json = [{'genre_name': 'sci-fi', 'vote': 179}, {'genre_name': 'horror', 'vote': 32}]
         api_url = '/'.join(self.url, 'books', 'genre', 3424234)
         r = requests.get(api_url)
         self.assertCountEqual(correct_json, r.json())
