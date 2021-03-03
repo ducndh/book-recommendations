@@ -3,7 +3,7 @@ Author: Duc, Sky
 Description: 
 Date: 2021-02-19 20:53:27
 LastEditors: Tianyi Lu
-LastEditTime: 2021-02-23 17:42:13
+LastEditTime: 2021-02-23 21:08:51
 '''
 import sys
 import argparse
@@ -22,8 +22,8 @@ def home():
 # are stored in the templates/ directory or one of its descendant directories,
 # without requiring you to have specific routes for each page.
 @app.route('/<path:path>')
-def shared_header_catchall(path):
-    return flask.render_template(path)
+def pending(path):
+    return flask.render_template('pending.html')
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser('A tiny Flask application, including API')

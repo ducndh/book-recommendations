@@ -17,10 +17,11 @@ DROP TABLE IF EXISTS ratings;
 -- 0, 1, 4, 7, 8, 15, 16, 17, 21, 23, 24, 26, 30
 CREATE TABLE books (
     id SERIAL,
-    -- series_id int,  (not included for end-to-end assignment)
+    series_id int,
     title text,
     cover_link text,
     rating_count int,
+    average_rate int,
     review_count int,
     number_of_page int,
     date_published text,
@@ -77,29 +78,29 @@ CREATE TABLE recommendations (
     recommended_book_id text
 );
 
-CREATE TABLE users (
-    username text,
-    password_hash int
-);
+-- CREATE TABLE users (
+--     username text,
+--     password_hash int
+-- );
 
-CREATE TABLE books_users (
-    book_id int,
-    user_id int
-);
+-- CREATE TABLE books_users (
+--     book_id int,
+--     user_id int
+-- );
 
-CREATE TABLE reviews (
-    id SERIAL,
-    user_id int,
-    book_id int,
-    content text,
-    review_time date
-);
+-- CREATE TABLE reviews (
+--     id SERIAL,
+--     user_id int,
+--     book_id int,
+--     content text,
+--     review_time date
+-- );
 
-CREATE TABLE ratings (
-    id SERIAL,
-    user_id int,
-    book_id int,
-    rating int --(1-5)
-);
+-- CREATE TABLE ratings (
+--     id SERIAL,
+--     user_id int,
+--     book_id int,
+--     rating int --(1-5)
+-- );
 
 \copy books from 'books.csv' DELIMITER ',' CSV NULL AS ''

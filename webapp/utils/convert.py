@@ -1,9 +1,9 @@
 '''
-Author: Tianyi Lu
+Author: Duc, Sky
 Description: Converting goodreads.csv to small csvs we need.
 Date: 2021-02-23 18:23:11
 LastEditors: Tianyi Lu
-LastEditTime: 2021-02-23 19:30:26
+LastEditTime: 2021-02-23 22:37:05
 '''
 import csv
 def read_csv(filename):
