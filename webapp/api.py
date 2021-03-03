@@ -47,7 +47,6 @@ def extend_query(query, conditions):
 # ?title={title}&start_year={start_year}&end_year={end_year}&genres={genres}
 # &setting={setting}&character={character}&isbn13={isbn13}
 def get_books():
-<<<<<<< HEAD
 	title = flask.request.args.get('title', default='',type=str)
 	start_year = flask.request.args.get('start_year', default=0, type=int)
 	end_year = flask.request.args.get('end_year', default=10000, type=int)
