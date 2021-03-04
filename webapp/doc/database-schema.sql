@@ -3,7 +3,7 @@
 DROP TABLE IF EXISTS books;
 DROP TABLE IF EXISTS series;
 DROP TABLE IF EXISTS authors;
-DROP TABLE IF EXISTS authors_books;
+DROP TABLE IF EXISTS books_authors;
 DROP TABLE IF EXISTS genres;
 DROP TABLE IF EXISTS genres_votes;
 DROP TABLE IF EXISTS awards;
@@ -14,15 +14,15 @@ DROP TABLE IF EXISTS books_users;
 DROP TABLE IF EXISTS reviews;
 DROP TABLE IF EXISTS ratings;
 
--- 0, 1, 4, 7, 8, 15, 16, 17, 21, 23, 24, 26, 30
+-- 0, 1, 4, 7, 8, 9, 15, 16, 17, 21, 23, 24, 26, 30
 CREATE TABLE books (
     id SERIAL,
-    series_id int,
     title text,
     cover_link text,
+    series_id int,
     rating_count int,
-    average_rate int,
     review_count int,
+    average_rate float,
     number_of_page int,
     date_published text,
     publisher text,
@@ -41,13 +41,14 @@ CREATE TABLE series (
 CREATE TABLE authors (
     id SERIAL,
     full_name text,
+    cover_link text,
     birth_place text,
-    genre text
+    about text
 );
 
-CREATE TABLE authors_books (
-    author_id int,
-    book_id int
+CREATE TABLE books_authors (
+    book_id int,
+    author_id int
 );
 
 CREATE TABLE genres (
@@ -60,7 +61,6 @@ CREATE TABLE genres_votes (
     genre_id int,
     vote int
 );
-
 
 CREATE TABLE awards (
     id SERIAL,
@@ -75,7 +75,7 @@ CREATE TABLE books_awards (
 
 CREATE TABLE recommendations (
     current_book_id int,
-    recommended_book_id text
+    recommended_book_id int
 );
 
 -- CREATE TABLE users (
@@ -103,4 +103,13 @@ CREATE TABLE recommendations (
 --     rating int --(1-5)
 -- );
 
-\copy books from 'books.csv' DELIMITER ',' CSV NULL AS ''
+\copy books from '../static/books.csv' DELIMITER ',' CSV NULL AS ''
+\copy series from '../static/series.csv' DELIMITER ',' CSV NULL AS ''
+\copy authors from '../static/authors.csv' DELIMITER ',' CSV NULL AS ''
+\copy books_authors from '../static/books_authors.csv' DELIMITER ',' CSV NULL AS ''
+\copy genres from '../static/genres.csv' DELIMITER ',' CSV NULL AS ''
+\copy genres_votes from '../static/genres_votes.csv' DELIMITER ',' CSV NULL AS ''
+\copy awards from '../static/awards.csv' DELIMITER ',' CSV NULL AS ''
+\copy books_awards from '../static/books_awards.csv' DELIMITER ',' CSV NULL AS ''
+\copy recommendations from '../static/recommendations.csv' DELIMITER ',' CSV NULL AS ''
+

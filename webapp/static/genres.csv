@@ -1,0 +1,870 @@
+1,Young Adult
+2,Mystery
+3,Romance
+4,Christian Fiction
+5,Christian
+6,Fiction
+7,Thriller
+8,Horror
+9,Economics-Finance
+10,Nonfiction
+11,Business
+12,Finance-Personal Finance
+13,Self Help
+14,Currency-Money
+15,Economics
+16,Self Help-Personal Development
+17,Audiobook
+18,Psychology
+19,Historical-Historical Fiction
+20,Historical-Regency
+21,Romance-Historical Romance
+22,Historical
+23,American-Southern
+24,Gothic-Southern Gothic
+25,Sequential Art-Comics
+26,Sequential Art-Graphic Novels
+27,Sequential Art-Bande DessinÃ©e
+28,Humor
+29,Cultural-France
+30,Poetry
+31,Childrens
+32,Classics
+33,Fantasy
+34,Science Fiction-Steampunk
+35,Science Fiction
+36,Adventure
+37,Science Fiction Fantasy
+38,Adult
+39,Fantasy-Epic Fantasy
+40,Fantasy-Urban Fantasy
+41,Suspense
+42,Art
+43,Autobiography-Memoir
+44,Inspirational
+45,Language-Writing
+46,Science
+47,History
+48,Sexuality
+49,Anthropology
+50,Mystery-Crime
+51,Fantasy-Dragons
+52,Fantasy-High Fantasy
+53,Cultural-Russia
+54,Military-Military History
+55,War
+56,War-Military Fiction
+57,Cultural-Ireland
+58,Womens Fiction-Chick Lit
+59,Contemporary
+60,Adult Fiction
+61,European Literature-Irish Literature
+62,Womens Fiction
+63,Adult Fiction-Erotica
+64,War-World War II
+65,World War II-Holocaust
+66,Shapeshifters-Werewolves
+67,Fantasy-Paranormal
+68,Romance-Paranormal Romance
+69,Magical Realism
+70,Thriller-Mystery Thriller
+71,Mystery-Historical Mystery
+72,European Literature-French Literature
+73,Literature
+74,Crime-True Crime
+75,Biography
+76,Paranormal-Shapeshifters
+77,Fantasy-Magic
+78,Young Adult-Young Adult Fantasy
+79,Romance-Christian Romance
+80,Novels
+81,Cultural-Africa
+82,Eastern Africa-Malawi
+83,Biography Memoir
+84,Biography-Autobiography
+85,Academic-School
+86,Short Stories
+87,European Literature-Polish Literature
+88,Science Fiction-Time Travel
+89,Plays
+90,Drama
+91,Fantasy-Mythology
+92,European Literature-German Literature
+93,Childrens-Picture Books
+94,North American Hi...-American History
+95,Military History-Civil War
+96,Politics
+97,Politics-Presidents
+98,Childrens-Middle Grade
+99,School Stories-Boarding School
+100,Young Adult-Teen
+101,Young Adult-High School
+102,Realistic Fiction
+103,Animals
+104,Paranormal-Ghosts
+105,Fantasy-Supernatural
+106,Paranormal-Vampires
+107,Cultural-Poland
+108,Science Fiction-Dystopia
+109,Apocalyptic-Post Apocalyptic
+110,Science Fiction-Apocalyptic
+111,History-Russian History
+112,History-European History
+113,Literature-18th Century
+114,New Adult
+115,Romance-Contemporary Romance
+116,Music
+117,Music-Musicians
+118,Religion-Buddhism
+119,Philosophy
+120,Spirituality
+121,Religion
+122,Cultural-Italy
+123,Historical Romance-Regency Romance
+124,Historical-Georgian
+125,European Literature-British Literature
+126,Cultural-Australia
+127,Action
+128,Adventure-Survival
+129,Science Fiction-Aliens
+130,Romance-Romantic Suspense
+131,Thriller-Legal Thriller
+132,Pseudoscience-Conspiracy Theories
+133,Fantasy-Dark Fantasy
+134,Northern Africa-Egypt
+135,Literature-American
+136,Fairies-Fae
+137,Romance-Science Fiction Romance
+138,Erotica-BDSM
+139,Mystery-Detective
+140,Literature-20th Century
+141,Anthologies
+142,Western Africa-Ghana
+143,Literature-African Literature
+144,English History-Tudor Period
+145,Academic-College
+146,Sociology-Abuse
+147,Fantasy-Fairy Tales
+148,Fairy Tales-Beauty and The Beast
+149,Retellings
+150,Comics-Superheroes
+151,Cultural-Canada
+152,Science Fiction-Robots
+153,Literary Fiction
+154,Leadership
+155,Language-Communication
+156,Business-Management
+157,Buisness
+158,Law
+159,European Literature-Italian Literature
+160,Feminism
+161,Womens
+162,Childrens-Juvenile
+163,Family
+164,Childrens-Chapter Books
+165,Christianity-Lds
+166,Biblical Fiction
+167,Spy Thriller-Espionage
+168,Novella
+169,Christian-Christian Living
+170,Religion-Christianity
+171,Relationships
+172,Religion-Theology
+173,Holiday-Christmas
+174,Holiday
+175,Childrens-Storytime
+176,Kids
+177,Sequential Art-Manga
+178,Environment
+179,Book Club
+180,Environment-Climate Change
+181,Environment-Nature
+182,Romance-Erotic Romance
+183,Humor-Comedy
+184,Eastern Africa-Kenya
+185,Religion-Judaism
+186,Literature-Jewish
+187,Reference
+188,Mystery-Murder Mystery
+189,Cultural-Greece
+190,European History-French Revolution
+191,European Literature-Romanian Literature
+192,Cultural-Iran
+193,Sports-Sports
+194,Historical-Medieval
+195,Historical Romance-Medieval Romance
+196,Writing-Essays
+197,Asian Literature-Turkish Literature
+198,Cultural-Turkish
+199,Roman
+200,American History-American Civil War
+201,Cultural-Japan
+202,Asian Literature-Japanese Literature
+203,Russian History-Romanovs
+204,Cultural-Asia
+205,LGBT
+206,Romance-M M Romance
+207,Cultural-Latin American
+208,European Literature-Spanish Literature
+209,Dark
+210,Cultural-Scotland
+211,Science-Geography
+212,Science-History Of Science
+213,Science-Technology
+214,Travel
+215,Science-Popular Science
+216,European Literature-Scandinavian Literature
+217,Cultural-Sweden
+218,Scandinavian Lite...-Nordic Noir
+219,Childrens-2nd Grade
+220,Health-Mental Health
+221,Philosophy-Theory
+222,Sociology
+223,GLBT-Queer
+224,GLBT-Lesbian
+225,The United States Of America
+226,Horror-Zombies
+227,Young Adult-Young Adult Contemporary
+228,Young Adult-Coming Of Age
+229,Gothic
+230,Westerns
+231,Literature-19th Century
+232,Historical-Victorian
+233,Futuristic
+234,Literature-Russian Literature
+235,Speculative Fiction
+236,Sequential Art-Comic Strips
+237,Cultural-Germany
+238,Mystery-Noir
+239,Crafts-Knitting
+240,Artificial Intelligence
+241,Futurism
+242,Science-Physics
+243,History-World History
+244,Space-Space Opera
+245,Love
+246,Cultural-India
+247,Asian Literature-Indian Literature
+248,Paranormal-Wizards
+249,Paranormal-Demons
+250,Culture-Film
+251,Parenting
+252,Romance-Fantasy Romance
+253,Writing-Journalism
+254,Graphic Novels Comics
+255,Comics-Comic Book
+256,Food and Drink-Food
+257,Food and Drink-Cooking
+258,Food and Drink-Food Writing
+259,Food and Drink-Foodie
+260,Food and Drink-Cookbooks
+261,Plays-Theatre
+262,Erotica-Menage
+263,Menage-M M F
+264,Sports-Baseball
+265,Education
+266,Gender
+267,Animals-Cats
+268,Lds-Mormonism
+269,LGBT-Gay
+270,Space
+271,European Literature-Danish
+272,Modern
+273,Art-Art History
+274,Literature-17th Century
+275,Media Tie In-Star Wars
+276,Mythology-Arthurian
+277,Cultural-African American
+278,Culture-Pop Culture
+279,Cultural
+280,Literature-Asian Literature
+281,Cultural-Spain
+282,Games-Video Games
+283,Novels-Light Novel
+284,Literature-Banned Books
+285,Fat-Fat Acceptance
+286,Realistic Fiction-Slice Of Life
+287,Gay-Gay Fiction
+288,Fairy Tales-Fairy Tale Retellings
+289,Paranormal-Angels
+290,Combat-Martial Arts
+291,Religion-Hinduism
+292,Business-Amazon
+293,Nature-Outdoors
+294,Childrens-Young Readers
+295,Animals-Dogs
+296,Thriller-Psychological Thriller
+297,Animals-Animal Fiction
+298,Animals-Birds
+299,Warfare-Fighters
+300,Childrens-Childrens Classics
+301,Anthologies-Collections
+302,Southern Africa-South Africa
+303,Culture-Society
+304,Thriller-Spy Thriller
+305,War-Terrorism
+306,Christianity-Catholic
+307,Religion-Faith
+308,Race-Anti Racist
+309,Race
+310,New York
+311,Social Issues-Poverty
+312,Pseudoscience-Numerology
+313,Occult-Divination
+314,Spirituality-New Age
+315,Occult-Tarot
+316,Health
+317,Food and Drink-Vegan
+318,Health-Nutrition
+319,Food and Drink-Diets
+320,War-World War I
+321,Contemporary Romance-Sports Romance
+322,Christian-Christian Non Fiction
+323,Paranormal-Witches
+324,Religion-Church
+325,Romance-Lesbian Romance
+326,Polyamorous-Reverse Harem
+327,Harlequin-Harlequin Heartwarming
+328,Category Romance-Harlequin
+329,Religion-Islam
+330,Lds-Lds Fiction
+331,Religion-Baha I
+332,Computer Science-Programming
+333,Science-Computer Science
+334,Computer Science-Software
+335,Computer Science-Technical
+336,Unfinished
+337,Paranormal-Fairies
+338,Cultural-China
+339,Football
+340,Asian Literature-Indonesian Literature
+341,Writing-Books About Books
+342,Productivity
+343,Criticism-Literary Criticism
+344,European Literature-Swedish Literature
+345,Travel-Road Trip
+346,New Adult-New Adult Romance
+347,Parenting-Adoption
+348,Eastern Africa-Ethiopia
+349,Business-Entrepreneurship
+350,Mental Health-Mental Illness
+351,Christian Fiction-Christian Fantasy
+352,Literature-Latin American Literature
+353,American-Americana
+354,Aviation
+355,LGBT-Transgender
+356,Civil War-Spanish Civil War
+357,European Literature-Dutch Literature
+358,European Literature-Czech Literature
+359,Occult
+360,Philosophy-Metaphysics
+361,Occult-Magick
+362,Literature-16th Century
+363,Science-Astronomy
+364,Cultural-Israel
+365,Design
+366,Dungeons and Dragons-Forgotten Realms
+367,Death
+368,Comics Manga
+369,Music-Hip Hop
+370,Science Fiction-Cyberpunk
+371,Disability
+372,Social Science
+373,Classics-Classic Literature
+374,Superheroes-Marvel
+375,Young Adult-Young Adult Romance
+376,Polyamory
+377,Mystery-Cozy Mystery
+378,Manga-Seinen
+379,Adventure-Pirates
+380,40k
+381,Cultural-International
+382,Animals-Horses
+383,European Literature-Finnish Literature
+384,Marriage
+385,Cultural-Tasmania
+386,Cultural-Brazil
+387,Short Stories-Short Story Collection
+388,Biology-Neuroscience
+389,American-African American Literature
+390,Own
+391,Lds-Lds Non Fiction
+392,Heroic Fantasy-Sword and Sorcery
+393,Pulp
+394,Social Science-Social Work
+395,Psychology-Counselling
+396,Medical
+397,Pop Culture-Nerd
+398,European Literature-Serbian Literature
+399,Mythology-Greek Mythology
+400,Urban
+401,Cultural-Pakistan
+402,Political Science-International Relations
+403,Childrens-1st Grade
+404,Romantic
+405,Media Tie In
+406,Western Africa-Nigeria
+407,Category Romance-Love Inspired
+408,Love Inspired-Love Inspired Historical
+409,Music-Musicals
+410,Literature-English Literature
+411,Horror-Ghost Stories
+412,Literature-21st Century
+413,Humanities-Language
+414,Fantasy-Heroic Fantasy
+415,Romance-M F Romance
+416,Horror-Splatterpunk
+417,Menage-M F M
+418,Art-Photography
+419,Prayer
+420,Mythology-Mermaids
+421,Sports-Mountaineering
+422,Mountaineering-Climbing
+423,Academic-Read For School
+424,Medicine-Psychiatry
+425,Games-Gaming
+426,Sports and Games-Games
+427,Science-Mathematics
+428,Fantasy-Weird Fiction
+429,Religion-Atheism
+430,African Literature-Egyptian Literature
+431,Literature-Marathi
+432,Science Fiction-Alternate History
+433,Cultural-Belgium
+434,Young Adult-Young Adult Historical Fiction
+435,Eastern Africa-Mozambique
+436,Diary
+437,Presidents-Us Presidents
+438,Romance-Western Romance
+439,Religion-God
+440,Historical Fiction-Historical Fantasy
+441,Sequential Art-Webcomic
+442,Art-Crafts
+443,How To
+444,Reference-Research
+445,Textbooks
+446,Health-Medicine
+447,Manga-Manhwa
+448,Cultural-Romania
+449,Manga-Yuri
+450,Nobel Prize
+451,Science-Biology
+452,Biology-Evolution
+453,Mystery-Hard Boiled
+454,Literature-14th Century
+455,Historical-Plantagenet
+456,Animals-Dinosaurs
+457,Holiday-Halloween
+458,Biology-Ecology
+459,Nature-Plants
+460,Science-Natural History
+461,Science Nature
+462,Science Fiction-Hard Science Fiction
+463,Weird Fiction-New Weird
+464,Social
+465,Sports-Hockey
+466,Manga-Shojo
+467,Northern Africa-Libya
+468,Northern Africa-Algeria
+469,Gay Romance-Gay For You
+470,War-Soldiers
+471,Dc Comics-Batman
+472,Superheroes-Dc Comics
+473,Sequential Art-Comix
+474,Gender-Gender Studies
+475,Social Movements-Social Justice
+476,Sports-Fitness
+477,American-American Fiction
+478,European Literature-Portuguese Literature
+479,Sci Fi Fantasy
+480,Cryptids-Yeti
+481,Folklore-Monsters
+482,Manga-Yaoi
+483,Yaoi-Boys Love
+484,Cultural-Portugal
+485,Couture-Fashion
+486,True Story
+487,Social Issues-Activism
+488,Sports-Basketball
+489,Epic
+490,Media Tie In-Buffy The Vampire Slayer
+491,Literature-15th Century
+492,Travel-Travelogue
+493,Folklore
+494,Young Adult-Young Adult Paranormal
+495,United States
+496,Criticism
+497,Christian Fiction-Christian Historical Fiction
+498,Amish
+499,Christian Fiction-Amish Fiction
+500,Esoterica-Astrology
+501,European Literature-Bulgarian Literature
+502,Classics-Modern Classics
+503,Lovecraftian-Cthulhu Mythos
+504,Horror-Lovecraftian
+505,Marvel-X Men
+506,Food and Drink
+507,Cultural-Denmark
+508,Transport
+509,Manga-Shonen
+510,International Rel...-International Development
+511,Religion-Cults
+512,Classics-Cult Classics
+513,Soccer
+514,Sports-Cycling
+515,Literature-Ancient
+516,Music-Punk
+517,Romance-Love Story
+518,Science-Geology
+519,Biblical
+520,Fantasy-Unicorns
+521,World Of Warcraft-Warcraft
+522,Mmorpg-World Of Warcraft
+523,Menage-M M M
+524,Emergency Services-Police
+525,Academic-Academia
+526,Gardening
+527,History-Ancient History
+528,Mythology-Gods
+529,Teaching
+530,Romance-Time Travel Romance
+531,Military History-American Revolution
+532,American Revolution-American Revolutionary War
+533,Cultural-Hungary
+534,European Literature-Hungarian Literature
+535,Biology-Genetics
+536,Illness-Disease
+537,Christianity-New Testament
+538,Literature-Canadian Literature
+539,Media Tie In-Anime
+540,Politics-Political Science
+541,Role Playing Games-Dungeons and Dragons
+542,Media Tie In-Tv
+543,Young Adult-Young Adult Science Fiction
+544,Sequential Art
+545,Cultural-Ukraine
+546,Family Law-Fostering
+547,Historical Fiction-Prehistoric
+548,Art-Art Design
+549,Military Fiction-Military Romance
+550,Adventure-Maritime
+551,Mathematics-Geometry
+552,Eastern Africa-Rwanda
+553,Lesbian-Lesbian Fiction
+554,Humor-Comedian
+555,Science Fiction-Climate Change Fiction
+556,Emergency Services-Firefighters
+557,Buddhism-Zen
+558,History-Medieval History
+559,Asian Literature-Chinese Literature
+560,Cultural-Lebanon
+561,Romance-Clean Romance
+562,Medievalism-Romanticism
+563,Animals-Wolves
+564,Dungeons and Dragons-Dragonlance
+565,European Literature-Belgian
+566,Humanities-Linguistics
+567,Art and Photography
+568,Animals-Anthropomorphic
+569,Fan Fiction
+570,Psychology-Psychoanalysis
+571,Northern Africa-Sudan
+572,Historical Romance-Western Historical Romance
+573,Yaoi-Shounen Ai
+574,Science-Chemistry
+575,Religion-Wicca
+576,Crafts-Quilting
+577,Northern Africa-Morocco
+578,Childrens-Pre K
+579,European Literature-Ukrainian Literature
+580,History-Microhistory
+581,Academic
+582,Fairy Tales-Cinderella
+583,Media Tie In-Doctor Who
+584,Marvel-Spider Man
+585,Eastern Africa-Somalia
+586,Music-Rock N Roll
+587,Religion-Taoism
+588,Sequential Art-Cartoon
+589,Sports-Horse Racing
+590,Folk Tales
+591,Reference-Trivia
+592,Church-Church History
+593,Historical Romance-Victorian Romance
+594,Christianity-Discipleship
+595,Religion-Esoterica
+596,Cultural-Counter Culture
+597,Mystery-Paranormal Mystery
+598,Anthropology-Ethnography
+599,Philosophy-Skepticism
+600,Eastern Africa-Eritrea
+601,Graphic Novels Manga
+602,Anarchism
+603,Tragedy
+604,Poetry Plays
+605,Fairy Tales-Princesses
+606,Romance-Category Romance
+607,Literature-13th Century
+608,Female Authors
+609,Family Law-Divorce
+610,Science Fiction-Military Science Fiction
+611,Reportage
+612,Esoterica-Alchemy
+613,Social Issues-Class
+614,Canon
+615,Feminism-Womens Studies
+616,Earth-The World
+617,Mathematics-Number
+618,Gothic-Gothic Romance
+619,Computer Science-Computers
+620,Science-Engineering
+621,Historical-Edwardian
+622,Labor
+623,Politics-Government
+624,Religion-Paganism
+625,History-Prehistory
+626,Literature-European Literature
+627,Favorites
+628,Alcohol-Booze
+629,Alcohol-Cocktails
+630,Philosophy-Deception
+631,Harlequin-Harlequin Romance
+632,Museology-Museums
+633,Museology
+634,Neuroscience-Brain
+635,Art-Drawing
+636,Southern Africa-Botswana
+637,Science-Agriculture
+638,Gardening-Horticulture
+639,Romance-African American Romance
+640,Architecture
+641,Computer Science-Coding
+642,Mystery-Golden Age Mystery
+643,Sequential Art-Komik
+644,Manga-Manga Romance
+645,Social Science-Social Media
+646,Polyamorous-Harem
+647,Stories
+648,Crafts-Sewing
+649,Judaism-Judaica
+650,Occult-Mysticism
+651,Paranormal Urban Fantasy
+652,Philosophy-Logic
+653,Category Romance-Mills and Boon
+654,Art-Graffiti
+655,Romance-Interracial Romance
+656,Environment-Green
+657,Harlequin-Harlequin Desire
+658,History-Food History
+659,Academic-Students
+660,Economics-Frugal
+661,Science Fiction-Utopia
+662,Conservation
+663,Historical-Stuart
+664,M M Romance-M M Horror
+665,Eastern Africa-Tanzania
+666,Diary-Journal
+667,Academic-Teachers
+668,Literature-Post Colonial
+669,Media Tie In-Star Trek
+670,Witchcraft
+671,Horror-Bizarro Fiction
+672,Science Fiction-Dying Earth
+673,Computer Science-Algorithms
+674,International Dev...-Human Development
+675,Sexuality-Sex Work
+676,Category Romance-Loveswept
+677,Western Africa-Liberia
+678,Music-Jazz
+679,Diary-Journaling
+680,Christianity-Old Testament
+681,Games-Chess
+682,Computers-Internet
+683,Food and Drink-Culinary
+684,Love Inspired-Love Inspired Suspense
+685,Punk-Punx
+686,Hugo Awards
+687,Southern Africa-Namibia
+688,Islam-Muslimah
+689,Social Justice-Social Change
+690,Dc Comics-Superman
+691,Health-Fat
+692,Computers-Hackers
+693,Surreal
+694,Central Africa-Democratic Republic Of The ...
+695,M M Romance-M M Fantasy
+696,Social Issues
+697,LGBT-Asexual
+698,Science Fiction R...-Futuristic Romance
+699,Literature-Black Literature
+700,Africa-Northern Africa
+701,Academic-Academics
+702,Manga-Josei
+703,Engineering-Electrical Engineering
+704,Environment-Sustainability
+705,Art-Visual Art
+706,Native Americans
+707,Paranormal-Esp
+708,Central Africa-Angola
+709,Games-Role Playing Games
+710,Aircraft-Helicopters
+711,Westerns-Weird West
+712,Transport-Motorcycle
+713,Childrens-Nursery Rhymes
+714,Far Right-Ku Klux Klan
+715,Science Fiction-Alternate Universe
+716,Martial Arts-Mixed Martial Arts
+717,Culture-Cultural Studies
+718,Physics-Quantum Mechanics
+719,Doctors
+720,Cultural-Bangladesh
+721,LGBT-Bisexual
+722,Philosophy-Thelema
+723,Pseudoscience-Cryptozoology
+724,Childrens-School Stories
+725,Geology-Palaeontology
+726,Academic-Grad School
+727,German History-Nazi Party
+728,History-Archaeology
+729,Military History-Naval History
+730,Reference-Field Guides
+731,Cultural-Bulgaria
+732,Health-Illness
+733,Sports-Figure Skating
+734,Politics-Far Right
+735,Gender and Sexuality
+736,Polyamory-Polygamy
+737,Pop Culture-Fandom
+738,Philosophy-Eastern Philosophy
+739,Russia-Soviet History
+740,Civil War-English Civil War
+741,Nurses-Nursing
+742,Did Not Finish
+743,History-Japanese History
+744,M M Romance-M M Paranormal
+745,Transport-Cars
+746,European Literature-Albanian Literature
+747,Eastern Africa-Uganda
+748,M M Romance-M M Contemporary
+749,Eastern Africa-Zimbabwe
+750,Horror-Erotic Horror
+751,Harlequin-Harlequin Blaze
+752,Star Trek-Star Trek Deep Space Nine
+753,Christianity-Ecclesiology
+754,Category Romance-Silhouette
+755,Historical Fiction-Naval Historical Fiction
+756,Humanities-Classical Studies
+757,Sex Work-Strippers
+758,Fantasy-Comic Fantasy
+759,Horror-Gothic Horror
+760,Geography-Cities
+761,Gamebooks-Choose Your Own Adventure
+762,Religion-Scripture
+763,Media Tie In-Babylon 5
+764,Esoterica-Theosophy
+765,Eastern Africa-Burundi
+766,Astronomy-Planets
+767,Museology-Curation
+768,Central Africa-Republic Of The Congo
+769,Art-Woodwork
+770,History and Politics
+771,Transport-Railways
+772,Transgender-Cross Dressing
+773,Games-Game Design
+774,Harlequin-Harlequin Presents
+775,Sequential Art-Graphic Non Fiction
+776,Queer-Queer Lit
+777,LGBT-Genderqueer
+778,Comics Bd
+779,Travel-Walking
+780,Role Playing Games-World Of Darkness
+781,Western Africa-Benin
+782,Alcohol-Beer
+783,Food and Drink-Vegetarian
+784,Vegetarian-Vegetarianism
+785,Harlequin-Harlequin Nocturne
+786,Literature-Multicultural Literature
+787,Pseudoscience-Creation Science
+788,Reference-Dictionaries
+789,Number-Counting
+790,Harlequin-Harlequin Historical
+791,Science-Earth Sciences
+792,Transport-Bicycles
+793,Mine
+794,Reference-Guides
+795,Games-Gamebooks
+796,Adolescence
+797,Folk Tales-Fables
+798,Jewellery
+799,Literature-11th Century
+800,Alcohol-Wine
+801,Sex Work-Prostitution
+802,Mail Order Brides
+803,Dc Comics-Wonder Woman
+804,Plants-Herbs
+805,Africa-Eastern Africa
+806,Western Africa-Senegal
+807,Literature-12th Century
+808,Colouring Books
+809,Cartography-Maps
+810,Geography-Cartography
+811,Cryptids-Bigfoot
+812,Cities-Urban Studies
+813,Western Africa-Ivory Coast
+814,Beer-Brewing
+815,Aeroplanes
+816,Games-Go
+817,M M Romance-M M Science Fiction
+818,Dark Fantasy-Goth
+819,Star Trek-Star Trek The Next Generation
+820,M M Romance-M M Historical Romance
+821,Animals-Rabbits
+822,Health-Aspergers
+823,Science-Library Science
+824,Library Science-Information Science
+825,Star Trek-Star Trek Voyager
+826,Rock N Roll-Led Zeppelin
+827,Pseudoscience-Naturopathy
+828,Science-Vaccines
+829,Biography-Music Biography
+830,M M Romance-M M Mystery
+831,Fantasy-Low Fantasy
+832,Africa-Western Africa
+833,Disability-Disability Studies
+834,Pornography
+835,European History-Spanish History
+836,Food and Drink-Tea
+837,Transport-Aircraft
+838,Category Romance-Traditional Regency
+839,Reference-Guidebook
+840,Esoterica-Spiritualism
+841,History-Local History
+842,Humor-Jokes
+843,Harlequin-Hqn
+844,Christianity-Evangelism
+845,Linguistics-Semiotics
+846,Subways-London Underground
+847,Cities-Urban Planning
+848,Business-Apple
+849,Humanities
+850,GLBT-Queer Studies
+851,History-Latin American History
+852,Nature-Ornithology
+853,Environment-Peak Oil
+854,Cities-Urbanism
+855,Food and Drink-Cuisine
+856,Food and Drink-Gastronomy
+857,Health-Health Care
+858,Psychology-Emotion
+859,Western Africa-Sierra Leone
+860,Wildlife
+861,Satanism
+862,Northern Africa-Tunisia
+863,Art-Street Art
+864,Cultural-Kazakhstan
+865,Fat-Fat Studies
+866,Cultural-Bolivia
+867,History-Oral History
+868,Horror-Victor Frankenstein
+869,Outdoors-Wilderness
+870,American-American Classics
