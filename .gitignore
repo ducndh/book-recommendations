@@ -133,6 +133,6 @@ config.py
 .vscode/
 .env
 
-.csv
+*.csv
 
-/static/.csv
+/static/*.csv
