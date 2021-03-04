@@ -134,3 +134,5 @@ config.py
 .env
 
 .csv
+
+/static/.csv
