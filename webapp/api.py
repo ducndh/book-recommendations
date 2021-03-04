@@ -3,7 +3,7 @@ Author: Duc, Sky
 Description: 
 Date: 2021-02-23 17:41:16
 LastEditors: Tianyi Lu
-LastEditTime: 2021-02-23 22:01:26
+LastEditTime: 2021-03-04 16:56:50
 '''
 import sys
 import flask
@@ -36,11 +36,13 @@ def get_query(query):
 
 def extend_query(query, conditions):
 	if len(conditions) > 0:
-		query += "WHERE "
+		query += " WHERE "
 		for i in range(len(conditions)):
 			query += conditions[i]
 			if i < len(conditions)-1:
 				query += " AND "
+			else:
+				query += " "
 	return query
 
 @api.route('/books/search')
@@ -75,7 +77,7 @@ def get_books():
 	if len(query_conditions) > 0:
 		query = extend_query(query, query_conditions)
 	if (genres):
-	 	genres = "%" + genres + "%"
+		genres = "%" + genres + "%"
 		if len(query_conditions) > 0:
 			query += "AND"
 		else:
@@ -111,7 +113,10 @@ def get_books():
 
 @api.route('/books/order_by_rating') 
 def get_book_by_rating():
-	query = f"SELECT * FROM books ORDER BY books.average_rating LIMIT 4" 
+	query_head = "SELECT * FROM books" 
+	query_tail = "ORDER BY books.average_rate DESC LIMIT 5" 
+	query_head = extend_query(query_head, ["books.rating_count > 100"])
+	query = query_head + query_tail
 	cursor = get_query(query)
 
 	books_list = []
@@ -119,12 +124,12 @@ def get_book_by_rating():
 	for row in cursor:
 		book_dict = {}
 		book_dict['id'] = row[0]
-		book_dict['series_id'] = row[1]
-		book_dict['title'] = row[2]
-		book_dict['cover_link'] = row[3]
+		book_dict['title'] = row[1]
+		book_dict['cover_link'] = row[2]
+		book_dict['series_id'] = row[3]
 		book_dict['rating_count'] = row[4]
-		book_dict['average_rate'] = row[5]
-		book_dict['review_count'] = row[6]
+		book_dict['review_count'] = row[5]
+		book_dict['average_rate'] = row[6]
 		book_dict['number_of_page'] = row[7]
 		book_dict['date_published'] = row[8]
 		book_dict['publisher'] = row[9]
@@ -134,11 +139,16 @@ def get_book_by_rating():
 		book_dict['amazon_link'] = row[13]
 		book_dict['descriptions'] = row[14]
 		books_list.append(book_dict)
-	return json.dump(books_list)
+	return json.dumps(books_list)
 
 @api.route('/books/order_by_date') 
 def get_book_by_date():
-	query = f"SELECT * FROM books ORDER BY books.published_date LIMIT 4" 
+	query_head = "SELECT * FROM books"
+	query_tail = "ORDER BY books.date_published DESC LIMIT 5" 
+	query_head = extend_query(query_head, ["books.date_published IS NOT NULL",
+								           "LENGTH(books.date_published) = 10",
+										   "books.date_published LIKE '2020%'"])
+	query = query_head + query_tail
 	cursor = get_query(query)
 
 	books_list = []
@@ -161,7 +171,7 @@ def get_book_by_date():
 		book_dict['amazon_link'] = row[13]
 		book_dict['descriptions'] = row[14]
 		books_list.append(book_dict)
-	return json.dump(books_list)
+	return json.dumps(books_list)
 
 @api.route('/books') 
 def get_book_random():
