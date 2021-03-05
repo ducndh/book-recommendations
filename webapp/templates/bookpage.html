@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/webapp.css') }}" />
+    <!-- Add CSS for this page -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bookpage.css') }}" />
+    <!-- Add JS for this page -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bookpage.js') }}"></script>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+    <title>BookMatch</title>
+</head>
+<body>
+    <div class="topnav">
+        <a class="active" href="#home"><b>BOOKMATCH</b></a>
+        <a href="{{ url_for('home') }}">HOME</a>
+        <a href="{{ url_for('pending', path='default') }}">BOOKSHELF</a>
+        <a href="{{ url_for('pending', path='default') }}">LOG IN</a>
+
+        <form id="search-form">
+            <input type="text" id="basic-search" placeholder="Search..">
+        </form>
+    </div>
+
+    <!-- Home page only -->
+    <h2 class="page-head">Home Page</h2>
+    <hr>
+    <div class="page-content">
+        <ul id="book"></ul>
+    </div>
+
+
+</body>
+</html>
