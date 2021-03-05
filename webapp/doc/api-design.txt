@@ -1,79 +1,135 @@
 Author: Duc, Sky
 
-REQUEST:
-/books
-RESPONSE: a JSON list of ten books, each is a dictionary containing the following fields.
+REQUEST: /books
 
-	id -- (integer) id of the book
-	title -- (string) the title of the book.
-	cover_link -- (string) the URL link for the cover picture.
-	rating_count -- (integer) number of ratings this book received.
-	review_count -- (integer) number of reviews this book received.
-	number_of_page -- (integer) number of pages this book has.
-	date_published -- (string) publish date for the book
-	publisher -- (string) publisher of the book
-	isbn13 -- (string)the isbn13 number for the book
-	settings -- (string) the background settings of the book.
-	characters -- (list of string) major characters in the book
-	amazon_link -- (string) the link on Amazon to purchase the book.
-	description -- (string) a brief introduction to the book.
+RESPONSE: a random JSON list of four books, each is a dictionary containing the following fields.
+
+	id -- (INTEGER) id of the book
+	serial_id -- (INTEGER) id of the series that contain the book
+	title -- (TEXT) the title of the book.
+	cover_link -- (TEXT) the URL link for the cover picture.
+	rating_count -- (INTEGER) number of ratings this book received.
+	review_count -- (INTEGER) number of reviews this book received.
+	average_rate -- (FLOAT) the average rating that this book received.
+	number_of_page -- (INTEGER) number of pages this book has.
+	date_published -- (TEXT) publish date for the book
+	publisher -- (TEXT) publisher of the book
+	isbn13 -- (TEXT)the isbn13 number for the book
+	settings -- (TEXT) the background settings of the book.
+	characters -- (LIST) major characters in the book
+	amazon_link -- (TEXT) the link on Amazon to purchase the book.
+	description -- (TEXT) a brief introduction to the book.
+
+REQUEST: /books/order_by_date
+
+RESPONSE: a JSON list of books that is ordered by published date, each is a dictionary containing the following fields.
+
+	id -- (INTEGER) id of the book
+	serial_id -- (INTEGER) id of the series that contain the book
+	title -- (TEXT) the title of the book.
+	cover_link -- (TEXT) the URL link for the cover picture.
+	rating_count -- (INTEGER) number of ratings this book received.
+	review_count -- (INTEGER) number of reviews this book received.
+	average_rate -- (FLOAT) the average rating that this book received.
+	number_of_page -- (INTEGER) number of pages this book has.
+	date_published -- (TEXT) publish date for the book
+	publisher -- (TEXT) publisher of the book
+	isbn13 -- (TEXT)the isbn13 number for the book
+	settings -- (TEXT) the background settings of the book.
+	characters -- (LIST) major characters in the book
+	amazon_link -- (TEXT) the link on Amazon to purchase the book.
+	description -- (TEXT) a brief introduction to the book.
+
+REQUEST: /books/order_by_rating
+
+RESPONSE: a JSON list of books that is order by rating from best to worse, each is a dictionary containing the following fields.
+
+	id -- (INTEGER) id of the book
+	serial_id -- (INTEGER) id of the series that contain the book
+	title -- (TEXT) the title of the book.
+	cover_link -- (TEXT) the URL link for the cover picture.
+	rating_count -- (INTEGER) number of ratings this book received.
+	review_count -- (INTEGER) number of reviews this book received.
+	average_rate -- (FLOAT) the average rating that this book received.
+	number_of_page -- (INTEGER) number of pages this book has.
+	date_published -- (TEXT) publish date for the book
+	publisher -- (TEXT) publisher of the book
+	isbn13 -- (TEXT)the isbn13 number for the book
+	settings -- (TEXT) the background settings of the book.
+	characters -- (LIST) major characters in the book
+	amazon_link -- (TEXT) the link on Amazon to purchase the book.
+	description -- (TEXT) a brief introduction to the book.
 
 REQUEST: 
 /books/<id>
 RESPONSE: a JSON dictionary representing one book that have the following fields.
 
-	title -- (string) the title of the book.
-	cover_link -- (string) the URL link for the cover picture.
-	rating_count -- (integer) number of ratings this book received.
-	review_count -- (integer) number of reviews this book received.
-	number_of_page -- (integer) number of pages this book has.
-	date_published -- (string) publish date for the book
-	publisher -- (string) publisher of the book
-	isbn13 -- (string)the isbn13 number for the book
-	settings -- (string) the background settings of the book.
-	characters -- (list of string) major characters in the book
-	amazon_link -- (string) the link on Amazon to purchase the book.
-	description -- (string) a brief introduction to the book.
+	id -- (INTEGER) id of the book
+	serial_id -- (INTEGER) id of the series that contain the book
+	title -- (TEXT) the title of the book.
+	cover_link -- (TEXT) the URL link for the cover picture.
+	rating_count -- (INTEGER) number of ratings this book received.
+	review_count -- (INTEGER) number of reviews this book received.
+	average_rate -- (FLOAT) the average rating that this book received.
+	number_of_page -- (INTEGER) number of pages this book has.
+	date_published -- (TEXT) publish date for the book
+	publisher -- (TEXT) publisher of the book
+	isbn13 -- (TEXT)the isbn13 number for the book
+	settings -- (TEXT) the background settings of the book.
+	characters -- (LIST) major characters in the book
+	amazon_link -- (TEXT) the link on Amazon to purchase the book.
+	description -- (TEXT) a brief introduction to the book.
   
 
 REQUEST:
-/books/search?title={title_key}&genre={genre_key}&date={date_key}&isbn={isbn_key}&publisher={publisher_key}&charactors={charactors_key}
+/books/search?# ?title={title}&start_year={start_year}&end_year={end_year}&genres={genres}
+&setting={setting}&character={character}&isbn13={isbn13}
+GET parameters
+    title (Optional, default: '') -- return the book with title contains the search string, case-insensitively
+
+    start_year (Optional, default: 0) -- return books that published later than this year
+    
+    end_year (Optional, default: 9999) -- return books that published earlier than this year
+
+	genres (Optional, default: '') -- return the book with genre contains the search string, case-insensitively
+
+	setting (Optional, default: '') -- return the book with setting contains the search string, case-insensitively
+
+	character (Optional, default: '') -- return the book with character contains the search string, case-insensitively
+
+	isbn13 (Optional, default: '') -- return the book with isbn13 number equal to the search string, case-insensitively
 
 RESPONSE: a JSON list of dictionaries, each of which represents one book that match the search constraints. Each book dictionary will have the following fields.
 
-	id -- (integer) id of the book
-	title -- (string) the title of the book.
-	cover_link -- (string) the URL link for the cover picture.
-	rating_count -- (integer) number of ratings this book received.
-	review_count -- (integer) number of reviews this book received.
-	number_of_page -- (integer) number of pages this book has.
-	date_published -- (string) publish date for the book
-	publisher -- (string) publisher of the book
-	isbn13 -- (string)the isbn13 number for the book
-	settings -- (string) the background settings of the book.
-	characters -- (list of string) major characters in the book
-	amazon_link -- (string) the link on Amazon to purchase the book.
-	description -- (string) a brief introduction to the book.
+	id -- (INTEGER) id of the book
+	serial_id -- (INTEGER) id of the series that contain the book
+	title -- (TEXT) the title of the book.
+	cover_link -- (TEXT) the URL link for the cover picture.
+	rating_count -- (INTEGER) number of ratings this book received.
+	review_count -- (INTEGER) number of reviews this book received.
+	average_rate -- (FLOAT) the average rating that this book received.
+	number_of_page -- (INTEGER) number of pages this book has.
+	date_published -- (TEXT) publish date for the book
+	publisher -- (TEXT) publisher of the book
+	isbn13 -- (TEXT)the isbn13 number for the book
+	settings -- (TEXT) the background settings of the book.
+	characters -- (LIST) major characters in the book
+	amazon_link -- (TEXT) the link on Amazon to purchase the book.
+	description -- (TEXT) a brief introduction to the book.
 
-REQUEST:
-/books/reviews/<id>
 
-RESPONSE: a JSON list of dictionaries, each of which represents one review for the book specified by <id>. Each review will have the following fields.
-
-	user_id -- (integer) the id of the user who made the review
-	content -- (string) the content of the review
-
+(to be implemented)
 REQUEST:
 /books/ratings/<id>
 
 RESPONSE: a JSON dictionary representing ratings of the book whose ID matches the specified ID. This dictionary will have the following fields.
 
-	one_star_rating -- (integer) the number of one star rating
-	two_stars_rating -- (integer) the number of two stars rating
-	three_stars_rating -- (integer) the number of three stars rating
-	four_stars_rating -- (integer) the number of four stars rating
-	five_stars_rating -- (integer) the number of five stars rating
-	Average_rating -- (float) the average rating of the book that is calculated using the number of ratings
+	one_star_rating -- (INTEGER) the number of one star rating
+	two_stars_rating -- (INTEGER) the number of two stars rating
+	three_stars_rating -- (INTEGER) the number of three stars rating
+	four_stars_rating -- (INTEGER) the number of four stars rating
+	five_stars_rating -- (INTEGER) the number of five stars rating
+	Average_rating -- (INTEGER) the average rating of the book that is calculated using the number of ratings
 
 
 REQUEST:
@@ -81,18 +137,15 @@ REQUEST:
 
 RESPONSE: a JSON dictionary containing a list of recommended books id derived from a book whose ID matches the specified ID. This dictionary will have the following fields.
 
-	recommendations -- (list) a list of books ID that are similar to the specified book based on goodreads recommendation. 
-
-
-
+	recommendations -- (LIST) a list of books ID that are similar to the specified book based on goodreads recommendation. 
 
 REQUEST:
 /books/genre/<id>
 
 RESPONSE: a JSON list of dictionary, each of which represents one type of genre for the book specified by <id>. Each genre will have the following fields.
 
-	genre_name -- (string) a genre that the book belongs to.
-	vote --- (integer) the number of votes for this genre
+	genre_name -- (TEXT) a genre that the book belongs to.
+	vote --- (INTEGER) the number of votes for this genre
 
 
 REQUEST:
@@ -100,21 +153,29 @@ REQUEST:
 
 RESPONSE: a JSON dictionary represent one author whose ID matches the specified ID. This dictionary will have the following fields.
 
-	name -- (string) the name of the author 
-	birth_place -- (string) the name of the place that the author is born
-	genre -- (string) the genres that the author wrote
-	books_id --(list) the list of books ID that the author wrote
+	full_name -- (TEXT) the name of the author
+	cover_link -- (TEXT) the link to the picture of the author 
+	birth_place -- (TEXT) the name of the place that the author is born
+	about -- (TEXT) information about the author
+	book_id --(LIST) the list of books ID that the author wrote
 
 
 REQUEST: 
 /authors/search?name={name_key}
 
+GET parameters
+    name (Optional, default: '') -- return the author with the name contains the search string, case-insensitively
+
 RESPONSE: a JSON list of dictionaries, each of which represents one author whose name contains the search key. Each author dictionary will have the following fields.
 
-	name -- (string) the name of the author 
-	birth_place -- (string) the name of the place that the author is born
-	genre -- (string) the genres that the author wrote
+	full_name -- (TEXT) the name of the author
+	cover_link -- (TEXT) the link to the picture of the author 
+	birth_place -- (TEXT) the name of the place that the author is born
+	about -- (TEXT) information about the author
+	book_id --(LIST) the list of books ID that the author wrote
 
+
+(to be implemented)
 REQUEST:
 /user/bookshelf
 

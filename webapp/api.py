@@ -310,6 +310,7 @@ def get_author_by_name():
 		author_list.append(author_dict)
 	return json.dumps(author_list)
 
-
-# books/<id>
-# /help
+@api.route('/help')
+def get_help():
+	with open('doc/api-design.txt', 'w') as f:
+		return json.dumps(f)
