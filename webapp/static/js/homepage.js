@@ -3,7 +3,7 @@
  * @Description: 
  * @Date: 2021-02-23 20:20:40
  * @LastEditors: Tianyi Lu
- * @LastEditTime: 2021-03-06 02:03:01
+ * @LastEditTime: 2021-03-06 03:17:21
  */
 
 window.onload = initialize;
@@ -16,6 +16,72 @@ function getAPIBaseURL() {
 function getStaticURL() {
     var staticURL = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + '/static';
     return staticURL
+}
+
+function renderHeadline(numItems) {
+    var url = getAPIBaseURL() + '/books'
+
+    fetch(url, {method: 'get'})
+    
+    .then((response) => response.json())
+
+    .then(function(books) {
+        var listBody = ''
+
+        if (books.length < numItems) {
+            numItems = books.length
+        }
+
+        for (var k = 0; k < numItems; k++) {
+            var book = books[k]
+
+            // if (!book['cover_link']) {
+            //     continue;
+            // }
+
+            listBody += '<div class="headline-item">'
+                      + '<img class="headline-img" src="' + book['cover_link'] + '">'
+                      + '</div>'
+        }
+        
+        var headlineElement = document.getElementById('headline');
+        if (headlineElement) {
+            headlineElement.innerHTML = listBody;
+        }
+    })
+
+    .catch(function(error) {
+        console.log(error);
+    });
+}
+
+function renderGenres() {
+    var url = getAPIBaseURL() + '/genres'
+
+    fetch(url, {method: 'get'})
+    
+    .then((response) => response.json())
+
+    .then(function(genres) {
+        var listBody = ''
+
+        for (var k = 0; k < 10; k++) {
+            var genre = genres[k]
+
+            listBody += '<div class="genre-item">'
+                      + '<p>' + genre + '</p>'
+                      + '</div>'
+        }
+        
+        var genreElement = document.getElementById('genre-content');
+        if (genreElement) {
+            genreElement.innerHTML = listBody;
+        }
+    })
+
+    .catch(function(error) {
+        console.log(error);
+    });
 }
 
 function renderStars(average_rate) {
@@ -35,7 +101,7 @@ function renderStars(average_rate) {
 function renderBookList(endpoint, elementId, numItems) {
     var url = getAPIBaseURL() + '/books' + endpoint;
     fetch(url, {method: 'get'})
-
+    
     .then((response) => response.json())
 
     .then(function(books) {
@@ -101,6 +167,8 @@ function initialize() {
     var searchForm = document.getElementById('search-form')
     searchForm.addEventListener('submit', getSearchResult)
 
+    renderHeadline(4)
+    renderGenres()
     renderBookList('/order_by_rating', 'highly-rated', 4)
     renderBookList('/order_by_date', 'newly-published', 4)
     
