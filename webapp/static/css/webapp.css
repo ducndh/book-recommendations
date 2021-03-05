@@ -3,7 +3,8 @@
 */
 
 body {
-    margin: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
     font-family: Helvetica;
 }
 /* Add a black background color to the top navigation bar */
@@ -34,6 +35,7 @@ body {
 .topnav a.active {
     background-color: #2196F3;
     color: white;
+    font-family: "Times New Roman", Times, serif;
 }
 
 /* Style the search box inside the navigation bar */

@@ -3,7 +3,7 @@
  * @Description: 
  * @Date: 2021-02-23 20:20:40
  * @LastEditors: Tianyi Lu
- * @LastEditTime: 2021-02-23 22:42:48
+ * @LastEditTime: 2021-03-05 15:04:50
  */
 
 window.onload = initialize;
@@ -13,23 +13,32 @@ function getAPIBaseURL() {
     return baseURL;
 }
 
-function initialize() {
+function getStaticURL() {
+    var staticURL = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + '/static';
+    return staticURL
+}
 
-    var url = getAPIBaseURL() + '/books';
+function renderBookList(endpoint, elementId) {
+    var url = getAPIBaseURL() + '/books' + endpoint;
     fetch(url, {method: 'get'})
 
     .then((response) => response.json())
 
     .then(function(books) {
-        var listBody = '';
+        var listBody = ''
+
         for (var k = 0; k < books.length; k++) {
-            var book = books[k];
+            var book = books[k]
             var description
 
             if (book['description'].length > 600) {
                 description = book['description'].slice(0, 600) + ' ...(more)'
             } else {
                 description = book['description']
+            }
+
+            if (!book['cover_link']) {
+                book['cover_link'] = getStaticURL() + '/default_book_cover.jpg'
             }
 
             listBody += '<li class="book">'
@@ -53,7 +62,7 @@ function initialize() {
                       + '<hr/>';
         }
 
-        var bookListElement = document.getElementById('book-list');
+        var bookListElement = document.getElementById(elementId);
         if (bookListElement) {
             bookListElement.innerHTML = listBody;
         }
@@ -62,5 +71,20 @@ function initialize() {
     .catch(function(error) {
         console.log(error);
     });
+}
+
+function getSearchResult() {
+    var searchKey = document.getElementById("basic-search").value
+    alert("key:" + searchKey)
+}
+
+function initialize() {
+
+    var searchForm = document.getElementById('search-form')
+    searchForm.addEventListener('submit', getSearchResult)
+
+    renderBookList('/order_by_rating', 'book-list')
+
+    
 }
 

@@ -3,31 +3,35 @@
  * @Description: 
  * @Date: 2021-02-23 18:19:02
  * @LastEditors: Tianyi Lu
- * @LastEditTime: 2021-02-23 22:42:21
+ * @LastEditTime: 2021-03-05 15:10:50
 -->
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='webapp.css') }}" />
-    <script type="text/javascript" src="{{ url_for('static', filename='webapp.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/webapp.css') }}" />
+    <script type="text/javascript" src="{{ url_for('static', filename='js/webapp.js') }}"></script>
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
-    <title>CS 257: Software Design</title>
+    <title>BookMatch</title>
 </head>
 <body>
     <div class="topnav">
-        <a class="active" href="#home">BOOK MATCH</a>
-        <input type="text" id ="basic_search" placeholder="Search..">
+        <a class="active" href="#home"><b>BOOKMATCH</b></a>
         <a href="{{ url_for('home') }}">HOME</a>
         <a href="{{ url_for('pending', path='default') }}">BOOKSHELF</a>
         <a href="{{ url_for('pending', path='default') }}">LOG IN</a>
+
+        <form id="search-form">
+            <input type="text" id="basic-search" placeholder="Search..">
+        </form>
     </div>
 
-    <h2 class="page-head">Book List</h2>
+    <h2 class="page-head">Home Page</h2>
     <hr>
     <div class="page-content">
         <ul id="book-list"></ul>
     </div>
+
 
 </body>
 </html>

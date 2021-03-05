@@ -3,7 +3,7 @@ Author: Duc, Sky
 Description: 
 Date: 2021-02-23 17:41:16
 LastEditors: Tianyi Lu
-LastEditTime: 2021-03-04 16:56:50
+LastEditTime: 2021-03-05 14:15:33
 '''
 import sys
 import flask
@@ -137,7 +137,7 @@ def get_book_by_rating():
 		book_dict['settings'] = row[11]
 		book_dict['characters'] = row[12]
 		book_dict['amazon_link'] = row[13]
-		book_dict['descriptions'] = row[14]
+		book_dict['description'] = row[14]
 		books_list.append(book_dict)
 	return json.dumps(books_list)
 
@@ -169,7 +169,7 @@ def get_book_by_date():
 		book_dict['settings'] = row[11]
 		book_dict['characters'] = row[12]
 		book_dict['amazon_link'] = row[13]
-		book_dict['descriptions'] = row[14]
+		book_dict['description'] = row[14]
 		books_list.append(book_dict)
 	return json.dumps(books_list)
 
@@ -254,3 +254,7 @@ def get_author_by_name(author_id):
 		author_dict['genre'] = cursor[2]
 		author_list.append(author_dict)
 	return json.dumps(author_list)
+
+
+# books/<id>
+# /help
