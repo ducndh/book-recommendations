@@ -3,7 +3,7 @@
  * @Description: 
  * @Date: 2021-02-23 20:20:40
  * @LastEditors: Tianyi Lu
- * @LastEditTime: 2021-03-05 15:04:50
+ * @LastEditTime: 2021-03-06 02:03:01
  */
 
 window.onload = initialize;
@@ -18,7 +18,21 @@ function getStaticURL() {
     return staticURL
 }
 
-function renderBookList(endpoint, elementId) {
+function renderStars(average_rate) {
+    result = ''
+    numStars = parseInt(average_rate)
+    for (var k = 0; k < numStars; k++) {
+        result += '<span class="fa fa-star checked"></span>'
+    }
+
+    for (var k = 0; k < (5-numStars); k++) {
+        result += '<span class="fa fa-star"></span>'
+    }
+
+    return result   
+}
+
+function renderBookList(endpoint, elementId, numItems) {
     var url = getAPIBaseURL() + '/books' + endpoint;
     fetch(url, {method: 'get'})
 
@@ -27,39 +41,43 @@ function renderBookList(endpoint, elementId) {
     .then(function(books) {
         var listBody = ''
 
-        for (var k = 0; k < books.length; k++) {
+        if (books.length < numItems) {
+            numItems = books.length
+        }
+
+        for (var k = 0; k < numItems; k++) {
             var book = books[k]
             var description
+            var title
 
-            if (book['description'].length > 600) {
-                description = book['description'].slice(0, 600) + ' ...(more)'
+            if (book['description'].length > 100) {
+                description = book['description'].slice(0, 100) + ' ...(more)'
             } else {
                 description = book['description']
+            }
+
+            if (book['title'].length > 50) {
+                title = book['title'].slice(0, 50) + ' ...'
+            } else {
+                title = book['title']
             }
 
             if (!book['cover_link']) {
                 book['cover_link'] = getStaticURL() + '/default_book_cover.jpg'
             }
 
-            listBody += '<li class="book">'
-                      + '<div class="book-cover">'
+            listBody += '<div class="book-item">'
                       + '<img class="book-img" src="' + book['cover_link'] + '">'
+                      + '<div class="book-text">'
+                      + '<h4>' + title + '</h4>'
+                      + '<p>'
+                      + renderStars(book['average_rate'])
+                      + ' ' + book['average_rate'] + ' (' + book['rating_count'] + ')'
+                      + '</p>'
+                      + '<p>' + description + '<p>'
+                      + '<div class="book-date">' + book['date_published'] + '</div>'
                       + '</div>'
-                      + '<div class="book-intro">'
-                      + '<div class="intro-content">'
-                      + '<h4>'+ book['title']+'</h4>'
-                      + '<p>' + book['date_published'] + '</p>'
-                      + '<p>' + description + '</p>'
-                      + '</div>'
-                      + '</div>'
-                      + '<div class="book-rating">'
-                      + '<div class="rating-content">'
-                      + '<h4>' + '#Ratings' + '</h4>'
-                      + '<h4>' + book['rating_count'] + '</h4>'
-                      + '</div>'
-                      + '</div>'
-                      + '</li>'
-                      + '<hr/>';
+                      + '</div>';
         }
 
         var bookListElement = document.getElementById(elementId);
@@ -83,8 +101,8 @@ function initialize() {
     var searchForm = document.getElementById('search-form')
     searchForm.addEventListener('submit', getSearchResult)
 
-    renderBookList('/order_by_rating', 'book-list')
-
+    renderBookList('/order_by_rating', 'highly-rated', 4)
+    renderBookList('/order_by_date', 'newly-published', 4)
     
 }
 

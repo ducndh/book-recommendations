@@ -1,7 +1,5 @@
+/* 
 
-.page-head {
-    padding: 0px 10px;
-}
 
 .page-content {
     background-color: white;
@@ -31,11 +29,7 @@
     margin: auto;
 }
 
-.page-content li.book .book-cover .book-img{
-    float: left;
-    width: 100%;
-    height: 100%;
-}
+
 
 .page-content li.book .book-intro{
     float: left;
@@ -62,4 +56,54 @@
     color: white;
     margin-left: 15px;
     margin-right: 15px;
+} */
+.page-head {
+    padding: 0px 10px;
+}
+
+.book-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: auto;
+    flex-wrap: wrap;
+}
+
+.book-item {
+    width: 400px;
+    height: 200px;
+    background-color: rgb(221, 221, 221);
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    transition: 0.3s;
+}
+
+.book-item:hover {
+    opacity: 0.5;
+}
+
+.book-img{
+    float: left;
+    width: 135px;
+    height: 100%;
+}
+
+.book-text {
+    margin: 5px;
+}
+
+.book-text h4 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.book-date {
+    float:right;
+    color: gray;
+}
+
+.checked {
+    color: orange;
 }

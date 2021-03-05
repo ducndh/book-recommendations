@@ -3,13 +3,15 @@
  * @Description: 
  * @Date: 2021-02-23 18:19:02
  * @LastEditors: Tianyi Lu
- * @LastEditTime: 2021-03-05 18:00:17
+ * @LastEditTime: 2021-03-06 02:09:21
 -->
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/webapp.css') }}" />
+    <!-- Icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Add CSS for this page -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/homepage.css') }}" />
     <!-- Add JS for this page -->
@@ -19,7 +21,7 @@
 </head>
 <body>
     <div class="topnav">
-        <a class="active" href="#home"><b>BOOKMATCH</b></a>
+        <a class="active" href="{{  url_for('home') }}"><b>BOOKMATCH</b></a>
         <a href="{{ url_for('home') }}">HOME</a>
         <a href="{{ url_for('pending', path='default') }}">BOOKSHELF</a>
         <a href="{{ url_for('pending', path='default') }}">LOG IN</a>
@@ -30,10 +32,18 @@
     </div>
 
     <!-- Home page only -->
-    <h2 class="page-head">Home Page</h2>
+    <div class="headline">
+        
+    </div>
+
+    <h3 class="page-head">Highly Rated</h3>
     <hr>
-    <div class="page-content">
-        <ul id="book-list"></ul>
+    <div id="highly-rated" class="book-container">
+    </div>
+
+    <h3 class="page-head">Newly Published</h3>
+    <hr>
+    <div id="newly-published" class="book-container">
     </div>
 
 
