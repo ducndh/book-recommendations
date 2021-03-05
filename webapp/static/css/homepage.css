@@ -1,0 +1,65 @@
+
+.page-head {
+    padding: 0px 10px;
+}
+
+.page-content {
+    background-color: white;
+    padding: 0px, 0px;
+    margin: 0px, 0px;
+}
+
+.page-content ul {
+    background-color: white;
+    padding-inline-start: 0px;
+}
+
+.page-content li.book {
+    list-style: none;
+    overflow: auto;
+    width: 100%;
+    max-width: 1400px;
+    min-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.page-content li.book .book-cover{
+    float: left;
+    width: 200px;
+    height: 300px;
+    margin: auto;
+}
+
+.page-content li.book .book-cover .book-img{
+    float: left;
+    width: 100%;
+    height: 100%;
+}
+
+.page-content li.book .book-intro{
+    float: left;
+    width: calc(100% - 370px);
+    background-color: gainsboro;
+    height: 300px;
+}
+
+.page-content li.book .book-intro .intro-content{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.page-content li.book .book-rating{
+    float: left;
+    width: 170px;
+    height: 100%;
+    background-color:gray;
+    color: white;
+    height: 300px;
+}
+
+.page-content li.book .book-rating .rating-content{
+    color: white;
+    margin-left: 15px;
+    margin-right: 15px;
+}

@@ -3,14 +3,17 @@
  * @Description: 
  * @Date: 2021-02-23 18:19:02
  * @LastEditors: Tianyi Lu
- * @LastEditTime: 2021-03-05 15:10:50
+ * @LastEditTime: 2021-03-05 18:00:17
 -->
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/webapp.css') }}" />
-    <script type="text/javascript" src="{{ url_for('static', filename='js/webapp.js') }}"></script>
+    <!-- Add CSS for this page -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/homepage.css') }}" />
+    <!-- Add JS for this page -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/homepage.js') }}"></script>
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
     <title>BookMatch</title>
 </head>
@@ -26,6 +29,7 @@
         </form>
     </div>
 
+    <!-- Home page only -->
     <h2 class="page-head">Home Page</h2>
     <hr>
     <div class="page-content">
