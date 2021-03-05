@@ -3,7 +3,7 @@ Author: Duc, Sky
 Description: 
 Date: 2021-02-23 17:41:16
 LastEditors: Tianyi Lu
-LastEditTime: 2021-03-06 01:58:08
+LastEditTime: 2021-03-06 03:10:49
 '''
 import sys
 import flask
@@ -199,9 +199,9 @@ def get_book_random():
 	for row in cursor:
 		book_dict = {}
 		book_dict['id'] = row[0]
-		book_dict['series_id'] = row[1]
-		book_dict['title'] = row[2]
-		book_dict['cover_link'] = row[3]
+		book_dict['title'] = row[1]
+		book_dict['cover_link'] = row[2]
+		book_dict['series_id'] = row[3]
 		book_dict['rating_count'] = row[4]
 		book_dict['review_count'] = row[5]
 		book_dict['average_rate'] = row[6]
@@ -212,7 +212,7 @@ def get_book_random():
 		book_dict['settings'] = row[11]
 		book_dict['characters'] = row[12]
 		book_dict['amazon_link'] = row[13]
-		book_dict['descriptions'] = row[14]
+		book_dict['description'] = row[14]
 		books_list.append(book_dict)
 	return json.dumps(books_list)
 
@@ -309,6 +309,12 @@ def get_author_by_name():
 		author_dict['about'] = row[3]
 		author_list.append(author_dict)
 	return json.dumps(author_list)
+
+@api.route('/genres')
+def get_genres():
+	query = "SELECT genres.genre FROM genres WHERE LENGTH(genres.genre) < 12 AND genres.genre <> 'Pornography' ORDER BY RANDOM() LIMIT 10;"
+	cursor = get_query(query, tuple())
+	return json.dumps([x[0] for x in cursor])
 
 @api.route('/help')
 def get_help():
