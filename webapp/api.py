@@ -24,11 +24,14 @@ def get_connection():
 							user=config.user,
 							password=config.password)
 
-def get_query(query):
+def get_query(query, data=None):
 	try:
 		connection = get_connection()
 		cursor = connection.cursor()
-		cursor.execute(query)
+		if (data):
+			cursor.execute(query, data)
+		else:
+			cursor.execute(query)
 	except Exception as e:
 		print(e, file=sys.stderr)
 		exit()
@@ -59,21 +62,28 @@ def get_books():
 
 	query = 'SELECT DISTINCT * FROM books, genres, genres_votes'
 	query_conditions = []
+	query_data = []
 	if (title):
 		title = "%" + title + "%"
-		query_conditions.append(f"books.title LIKE '{title}'")
+		query_data.append(title)
+		query_conditions.append(f"books.title LIKE %s")
 	if (start_year):
-		query_conditions.append(f"books.date_pubslished > {start_year}")
+		query_data.append(start_year)
+		query_conditions.append(f"books.date_pubslished > %s")
 	if (end_year):
-		query_conditions.append(f"books.date_pubslished < {end_year}")
+		query_data.append(end_year)
+		query_conditions.append(f"books.date_pubslished < %s")
 	if (setting):
 		setting = "%" + setting + "%"
-		query_conditions.append(f"books.settings LIKE '{setting}'")
+		query_data.append(setting)
+		query_conditions.append(f"books.settings LIKE %s")
 	if (character):
 		character = "%" + character + "%"
-		query_conditions.append(f"books.characters LIKE '{character}'")
+		query_data.append(character)
+		query_conditions.append(f"books.characters LIKE %s")
 	if (isbn13):
-		query_conditions.append(f"books.isbn13 = {isbn13}")
+		query_data.append(isbn13)
+		query_conditions.append(f"books.isbn13 = %s")
 	if len(query_conditions) > 0:
 		query = extend_query(query, query_conditions)
 	if (genres):
@@ -82,12 +92,13 @@ def get_books():
 			query += "AND"
 		else:
 			query += "WHERE"
-		query += f"genres.genre LIKE '{genres}' \
+		query_data.append(genres)
+		query += f"genres.genre LIKE %s \
 		  AND genres.id = genres_vote.genre_id \
 		  AND genres_votes.book_id = book.id"
 	query += " ORDER BY books.average_rating LIMIT 10;"
-
-	cursor = get_query(query)
+	data = tuple(query_data)
+	cursor = get_query(query, data)
 
 	books_list = []
 
@@ -200,11 +211,39 @@ def get_book_random():
 		books_list.append(book_dict)
 	return json.dump(books_list)
 
+@api.route('/books/<book_id>') 
+def get_book_by_id(book_id):
+	query = f"SELECT * FROM books WHERE books.id = %s" 
+	data = (book_id, )
+	cursor = get_query(query, data).fetchone()
+
+	books_list = []
+
+	for row in cursor:
+		book_dict = {}
+		book_dict['id'] = row[0]
+		book_dict['series_id'] = row[1]
+		book_dict['title'] = row[2]
+		book_dict['cover_link'] = row[3]
+		book_dict['rating_count'] = row[4]
+		book_dict['average_rate'] = row[5]
+		book_dict['review_count'] = row[6]
+		book_dict['number_of_page'] = row[7]
+		book_dict['date_published'] = row[8]
+		book_dict['publisher'] = row[9]
+		book_dict['isbn13'] = row[10]
+		book_dict['settings'] = row[11]
+		book_dict['characters'] = row[12]
+		book_dict['amazon_link'] = row[13]
+		book_dict['descriptions'] = row[14]
+		books_list.append(book_dict)
+	return json.dump(books_list)
 
 @api.route('/books/recommendation/<book_id>') 
 def get_recommendation_by_id(book_id):
-	query = f"SELECT * FROM recommendations WHERE recommendations.current_book_id = {book_id};" 
-	cursor = get_query(query).fetchone()
+	query = f"SELECT * FROM recommendations WHERE recommendations.current_book_id = %s;"
+	data = (book_id, ) 
+	cursor = get_query(query, data)
 	recommendation_dict = {}
 	recommendation = cursor[1].split(',')
 	recommendation_dict['recommendations'] = recommendation
@@ -213,9 +252,10 @@ def get_recommendation_by_id(book_id):
 @api.route('/books/genre/<book_id>') 
 def get_genre_by_id(book_id):
 	query = f"SELECT DISTINCT genre, vote FROM books, genres, genres_votes \
-	WHERE genres_votes.book_id = {book_id} \
+	WHERE genres_votes.book_id = %s \
 	AND genres.id = genres_vote.genre_id;"
-	cursor = get_query(query)
+	data = (book_id, ) 
+	cursor = get_query(query, data)
 	genres_list = []
 
 	for row in cursor:
@@ -227,9 +267,10 @@ def get_genre_by_id(book_id):
 
 @api.route('authors/<author_id>') 
 def get_author_by_id(author_id):
-	query = f"SELECT full_name, birth_place, genre, book_id FROM authors, authors_books WHERE authors.id = {author_id} \
-	AND authors_books.id = {author_id}" 
-	cursor = get_query(query)
+	query = f"SELECT full_name, birth_place, genre, book_id FROM authors, authors_books WHERE authors.id = %s \
+	AND authors_books.id = %s" 
+	data = (author_id, author_id) 
+	cursor = get_query(query, data)
 	author_dict = {}
 	books_list = []
 	for row in cursor:
@@ -244,8 +285,9 @@ def get_author_by_id(author_id):
 def get_author_by_name(author_id):
 	name = flask.request.args.get('name', default='',type=str)
 	name = '%' + name + '%'
-	query = f"SELECT * FROM authors, authors_books WHERE authors.name LIKE {name};"
-	cursor = get_query(query)
+	data = (name, )
+	query = f"SELECT * FROM authors, authors_books WHERE authors.name LIKE %s;"
+	cursor = get_query(query, data)
 	author_list = []
 	for row in cursor:
 		author_dict = {}
