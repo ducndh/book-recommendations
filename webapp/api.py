@@ -3,7 +3,7 @@ Author: Duc, Sky
 Description: 
 Date: 2021-02-23 17:41:16
 LastEditors: Tianyi Lu
-LastEditTime: 2021-03-06 03:10:49
+LastEditTime: 2021-03-06 04:50:23
 '''
 import sys
 import flask
@@ -318,5 +318,4 @@ def get_genres():
 
 @api.route('/help')
 def get_help():
-	with open('doc/api-design.txt', 'w') as f:
-		return json.dumps(f)
+	return flask.redirect(flask.url_for('static', filename='api-design.txt'))

@@ -3,7 +3,7 @@ Author: Duc, Sky
 Description: 
 Date: 2021-02-19 20:53:27
 LastEditors: Tianyi Lu
-LastEditTime: 2021-02-23 21:08:51
+LastEditTime: 2021-03-06 03:49:41
 '''
 import sys
 import argparse
@@ -21,7 +21,12 @@ def home():
 # This route supports relative links among your web pages, assuming those pages
 # are stored in the templates/ directory or one of its descendant directories,
 # without requiring you to have specific routes for each page.
-@app.route('/<path:path>')
+
+@app.route('/test')
+def book():
+    return flask.render_template('test.html')
+
+@app.route('/pending/<path:path>')
 def pending(path):
     return flask.render_template('pending.html')
 

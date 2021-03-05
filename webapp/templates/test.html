@@ -1,0 +1,34 @@
+<!--
+ * @Author: Tianyi Lu
+ * @Description: 
+ * @Date: 2021-03-06 03:46:43
+ * @LastEditors: Tianyi Lu
+ * @LastEditTime: 2021-03-06 03:48:40
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/webapp.css') }}" />
+    <!-- Add CSS for this page -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/test.css') }}" />
+    <!-- Add JS for this page -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/test.js') }}"></script>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+    <title>BookMatch</title>
+</head>
+<body>
+    <div class="topnav">
+        <a class="active" href="#home"><b>BOOKMATCH</b></a>
+        <a href="{{ url_for('home') }}">HOME</a>
+        <a href="{{ url_for('pending', path='default') }}">BOOKSHELF</a>
+        <a href="{{ url_for('pending', path='default') }}">LOG IN</a>
+
+        <form id="search-form">
+            <input type="text" id="basic-search" placeholder="Search..">
+        </form>
+    </div>
+
+
+</body>
+</html>
