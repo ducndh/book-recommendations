@@ -3,7 +3,7 @@ Author: Duc, Sky
 Description: 
 Date: 2021-02-23 17:41:16
 LastEditors: Tianyi Lu
-LastEditTime: 2021-03-05 16:06:37
+LastEditTime: 2021-03-05 17:56:01
 '''
 import sys
 import flask
@@ -53,75 +53,78 @@ def extend_query(query, conditions):
 # &setting={setting}&character={character}&isbn13={isbn13}
 def get_books():
 	title = flask.request.args.get('title', default=None,type=str)
-	start_year = flask.request.args.get('start_year', default=None, type=int)
-	end_year = flask.request.args.get('end_year', default=None, type=int)
+	# start_year = flask.request.args.get('start_year', default=None, type=int)
+	# end_year = flask.request.args.get('end_year', default=None, type=int)
 	setting = flask.request.args.get('setting', default=None, type=str)
 	character = flask.request.args.get('character', default=None, type=str)
 	genres = flask.request.args.get('genres', default=None, type=str)
 	isbn13 = flask.request.args.get('isbn13', default=None, type=int)
 
-	query = 'SELECT DISTINCT * FROM books, genres, genres_votes'
-	query_conditions = []
+	query = 'SELECT DISTINCT * FROM books'
+	query_conditions = ["books.rating_count > 50"]
 	query_data = []
+	# if (start_year):
+	# 	query_data.append(start_year)
+	# 	query_conditions.append(f"books.date_published > %s")
+	# if (end_year):
+	# 	query_data.append(end_year)
+	# 	query_conditions.append(f"books.date_published < %s")
 	if (title):
-		title = "%" + title + "%"
+		title = "%" + title.lower() + "%"
 		query_data.append(title)
-		query_conditions.append(f"books.title LIKE %s")
-	if (start_year):
-		query_data.append(start_year)
-		query_conditions.append(f"books.date_published > %s")
-	if (end_year):
-		query_data.append(end_year)
-		query_conditions.append(f"books.date_published < %s")
+		query_conditions.append(f"LOWER(books.title) LIKE %s")
 	if (setting):
-		setting = "%" + setting + "%"
+		setting = "%" + setting.lower() + "%"
 		query_data.append(setting)
-		query_conditions.append(f"books.settings LIKE %s")
+		query_conditions.append(f"LOWER(books.settings) LIKE %s")
 	if (character):
-		character = "%" + character + "%"
+		character = "%" + character.lower() + "%"
 		query_data.append(character)
-		query_conditions.append(f"books.characters LIKE %s")
+		query_conditions.append(f"LOWER(books.characters) LIKE %s")
 	if (isbn13):
 		query_data.append(isbn13)
 		query_conditions.append(f"books.isbn13 = %s")
+	if (genres):
+		query = "SELECT DISTINCT books.id, books.series_id, books.title, books.cover_link, \
+			     books.rating_count, books.review_count, books.average_rate, books.number_of_page, \
+				 books.date_published, books.publisher, books.isbn13, books.settings, books.characters, \
+				 books.amazon_link, books.descriptions \
+				 FROM books, genres, genres_votes"
+				 
+		genres = "%" + genres.lower() + "%"
+
+		query_data.append(genres)
+		query_conditions.append(f"LOWER(genres.genre) LIKE %s \
+		  AND genres.id = genres_votes.genre_id \
+		  AND books.id = genres_votes.book_id")
+	
 	if len(query_conditions) > 0:
 		query = extend_query(query, query_conditions)
-	if (genres):
-		genres = "%" + genres + "%"
-		if len(query_conditions) > 0:
-			query += "AND"
-		else:
-			query += "WHERE"
-		query_data.append(genres)
-		query += f"genres.genre LIKE %s \
-		  AND genres.id = genres_vote.genre_id \
-		  AND genres_votes.book_id = book.id"
-	query += " ORDER BY books.average_rate LIMIT 10;"
-	data = tuple(query_data)
-	# cursor = get_query(query, data)
 
-	print(query)
+	query += " ORDER BY books.average_rate DESC LIMIT 10;"
+	data = tuple(query_data)
+	cursor = get_query(query, data)
+
 	books_list = []
 
-	# for row in cursor:
-	# 	book_dict = {}
-	# 	book_dict['id'] = row[0]
-	# 	book_dict['series_id'] = row[1]
-	# 	book_dict['title'] = row[2]
-	# 	book_dict['cover_link'] = row[3]
-	# 	book_dict['rating_count'] = row[4]
-	# 	book_dict['average_rate'] = row[5]
-	# 	book_dict['review_count'] = row[6]
-	# 	book_dict['number_of_page'] = row[7]
-	# 	book_dict['date_published'] = row[8]
-	# 	book_dict['publisher'] = row[9]
-	# 	book_dict['isbn13'] = row[10]
-	# 	book_dict['settings'] = row[11]
-	# 	book_dict['characters'] = row[12]
-	# 	book_dict['amazon_link'] = row[13]
-	# 	book_dict['descriptions'] = row[14]
-	# 	books_list.append(book_dict)
-	# print(books_list)
+	for row in cursor:
+		book_dict = {}
+		book_dict['id'] = row[0]
+		book_dict['series_id'] = row[1]
+		book_dict['title'] = row[2]
+		book_dict['cover_link'] = row[3]
+		book_dict['rating_count'] = row[4]
+		book_dict['review_count'] = row[5]
+		book_dict['average_rate'] = row[6]
+		book_dict['number_of_page'] = row[7]
+		book_dict['date_published'] = row[8]
+		book_dict['publisher'] = row[9]
+		book_dict['isbn13'] = row[10]
+		book_dict['settings'] = row[11]
+		book_dict['characters'] = row[12]
+		book_dict['amazon_link'] = row[13]
+		book_dict['descriptions'] = row[14]
+		books_list.append(book_dict)
 	return json.dumps(books_list)
 
 @api.route('/books/order_by_rating') 
@@ -173,8 +176,8 @@ def get_book_by_date():
 		book_dict['title'] = row[2]
 		book_dict['cover_link'] = row[3]
 		book_dict['rating_count'] = row[4]
-		book_dict['average_rate'] = row[5]
-		book_dict['review_count'] = row[6]
+		book_dict['review_count'] = row[5]
+		book_dict['average_rate'] = row[6]
 		book_dict['number_of_page'] = row[7]
 		book_dict['date_published'] = row[8]
 		book_dict['publisher'] = row[9]
@@ -200,8 +203,8 @@ def get_book_random():
 		book_dict['title'] = row[2]
 		book_dict['cover_link'] = row[3]
 		book_dict['rating_count'] = row[4]
-		book_dict['average_rate'] = row[5]
-		book_dict['review_count'] = row[6]
+		book_dict['review_count'] = row[5]
+		book_dict['average_rate'] = row[6]
 		book_dict['number_of_page'] = row[7]
 		book_dict['date_published'] = row[8]
 		book_dict['publisher'] = row[9]
@@ -225,8 +228,8 @@ def get_book_by_id(book_id):
 	book_dict['title'] = cursor[2]
 	book_dict['cover_link'] = cursor[3]
 	book_dict['rating_count'] = cursor[4]
-	book_dict['average_rate'] = cursor[5]
-	book_dict['review_count'] = cursor[6]
+	book_dict['review_count'] = cursor[5]
+	book_dict['average_rate'] = cursor[6]
 	book_dict['number_of_page'] = cursor[7]
 	book_dict['date_published'] = cursor[8]
 	book_dict['publisher'] = cursor[9]
