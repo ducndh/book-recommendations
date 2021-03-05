@@ -3,7 +3,7 @@ Author: Duc, Sky
 Description: 
 Date: 2021-02-23 17:41:16
 LastEditors: Tianyi Lu
-LastEditTime: 2021-03-05 17:56:01
+LastEditTime: 2021-03-06 01:58:08
 '''
 import sys
 import flask
@@ -130,7 +130,7 @@ def get_books():
 @api.route('/books/order_by_rating') 
 def get_book_by_rating():
 	query_head = "SELECT * FROM books" 
-	query_tail = "ORDER BY books.average_rate DESC LIMIT 5" 
+	query_tail = "ORDER BY books.average_rate DESC LIMIT 10" 
 	query_head = extend_query(query_head, ["books.rating_count > 100"])
 	query = query_head + query_tail
 	cursor = get_query(query)
@@ -172,9 +172,9 @@ def get_book_by_date():
 	for row in cursor:
 		book_dict = {}
 		book_dict['id'] = row[0]
-		book_dict['series_id'] = row[1]
-		book_dict['title'] = row[2]
-		book_dict['cover_link'] = row[3]
+		book_dict['title'] = row[1]
+		book_dict['cover_link'] = row[2]
+		book_dict['series_id'] = row[3]
 		book_dict['rating_count'] = row[4]
 		book_dict['review_count'] = row[5]
 		book_dict['average_rate'] = row[6]
