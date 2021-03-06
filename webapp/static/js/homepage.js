@@ -3,19 +3,22 @@
  * @Description: 
  * @Date: 2021-02-23 20:20:40
  * @LastEditors: Tianyi Lu
- * @LastEditTime: 2021-03-06 03:17:21
+ * @LastEditTime: 2021-03-06 08:23:13
  */
 
 window.onload = initialize;
 
+function getBaseURL() {
+    var baseURL = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port
+    return baseURL
+}
+
 function getAPIBaseURL() {
-    var baseURL = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + '/api';
-    return baseURL;
+    return getBaseURL() + '/api';
 }
 
 function getStaticURL() {
-    var staticURL = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + '/static';
-    return staticURL
+    return getBaseURL() + '/static';
 }
 
 function renderHeadline(numItems) {
@@ -35,13 +38,9 @@ function renderHeadline(numItems) {
         for (var k = 0; k < numItems; k++) {
             var book = books[k]
 
-            // if (!book['cover_link']) {
-            //     continue;
-            // }
-
-            listBody += '<div class="headline-item">'
+            listBody += '<a class="headline-item" href="'+getBaseURL()+'/book?id='+book['id']+'">'
                       + '<img class="headline-img" src="' + book['cover_link'] + '">'
-                      + '</div>'
+                      + '</a>'
         }
         
         var headlineElement = document.getElementById('headline');
@@ -68,9 +67,11 @@ function renderGenres() {
         for (var k = 0; k < 10; k++) {
             var genre = genres[k]
 
-            listBody += '<div class="genre-item">'
+            listBody += '<a class="genre-item" href="' + getBaseURL() + '/search?genres=' + genre +'">'
+                    //   + '<div class="genre-item">'
                       + '<p>' + genre + '</p>'
-                      + '</div>'
+                    //   + '</div>'
+                      + '</a>'
         }
         
         var genreElement = document.getElementById('genre-content');
@@ -132,7 +133,7 @@ function renderBookList(endpoint, elementId, numItems) {
                 book['cover_link'] = getStaticURL() + '/default_book_cover.jpg'
             }
 
-            listBody += '<div class="book-item">'
+            listBody += '<a class="book-item" href="'+getBaseURL()+'/book?id='+book['id']+'">'
                       + '<img class="book-img" src="' + book['cover_link'] + '">'
                       + '<div class="book-text">'
                       + '<h4>' + title + '</h4>'
@@ -143,7 +144,7 @@ function renderBookList(endpoint, elementId, numItems) {
                       + '<p>' + description + '<p>'
                       + '<div class="book-date">' + book['date_published'] + '</div>'
                       + '</div>'
-                      + '</div>';
+                      + '</a>';
         }
 
         var bookListElement = document.getElementById(elementId);
@@ -157,9 +158,11 @@ function renderBookList(endpoint, elementId, numItems) {
     });
 }
 
-function getSearchResult() {
-    var searchKey = document.getElementById("basic-search").value
-    alert("key:" + searchKey)
+function getSearchResult(event) {
+    event.preventDefault()
+    var searchKey = document.getElementById("basic-search").value;
+    url = getBaseURL() + '/search?title=' + searchKey;
+    window.location.href = url;
 }
 
 function initialize() {

@@ -1,3 +1,10 @@
+<!--
+ * @Author: Tianyi Lu
+ * @Description: 
+ * @Date: 2021-03-06 03:37:46
+ * @LastEditors: Tianyi Lu
+ * @LastEditTime: 2021-03-06 07:59:06
+-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,19 +21,18 @@
     <div class="topnav">
         <a class="active" href="#home"><b>BOOKMATCH</b></a>
         <a href="{{ url_for('home') }}">HOME</a>
-        <a href="{{ url_for('pending', path='default') }}">BOOKSHELF</a>
-        <a href="{{ url_for('pending', path='default') }}">LOG IN</a>
+        <a href="{{ url_for('pending') }}">BOOKSHELF</a>
+        <a href="{{ url_for('pending') }}">LOG IN</a>
 
         <form id="search-form">
             <input type="text" id="basic-search" placeholder="Search..">
         </form>
     </div>
 
-    <!-- Home page only -->
-    <h2 class="page-head">Home Page</h2>
-    <hr>
-    <div class="page-content">
-        <ul id="book"></ul>
+    <div class="book-container">
+        <div id="book-img">
+        </div>
+        <div id="book-details"></div>
     </div>
 
 

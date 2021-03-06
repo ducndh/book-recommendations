@@ -3,7 +3,7 @@ Author: Duc, Sky
 Description: 
 Date: 2021-02-19 20:53:27
 LastEditors: Tianyi Lu
-LastEditTime: 2021-03-06 03:49:41
+LastEditTime: 2021-03-06 07:53:04
 '''
 import sys
 import argparse
@@ -22,12 +22,20 @@ def home():
 # are stored in the templates/ directory or one of its descendant directories,
 # without requiring you to have specific routes for each page.
 
-@app.route('/test')
-def book():
-    return flask.render_template('test.html')
+@app.route('/search')
+def search():
+    return flask.render_template('search.html')
 
-@app.route('/pending/<path:path>')
-def pending(path):
+@app.route('/book')
+def book():
+    return flask.render_template('bookpage.html')
+
+# @app.route('/test')
+# def book():
+#     return flask.render_template('test.html')
+
+@app.route('/pending')
+def pending():
     return flask.render_template('pending.html')
 
 if __name__ == '__main__':

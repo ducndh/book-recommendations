@@ -1,0 +1,63 @@
+<!--
+ * @Author: Tianyi Lu
+ * @Description: 
+ * @Date: 2021-03-06 04:55:06
+ * @LastEditors: Tianyi Lu
+ * @LastEditTime: 2021-03-06 06:40:50
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/webapp.css') }}" />
+    <!-- Add CSS for this page -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/search.css') }}" />
+    <!-- Add JS for this page -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/search.js') }}"></script>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+    <title>BookMatch</title>
+</head>
+<body>
+    <div class="topnav">
+        <a class="active" href="#home"><b>BOOKMATCH</b></a>
+        <a href="{{ url_for('home') }}">HOME</a>
+        <a href="{{ url_for('pending') }}">BOOKSHELF</a>
+        <a href="{{ url_for('pending') }}">LOG IN</a>
+
+        <form id="search-form">
+            <input type="text" id="basic-search" placeholder="Search..">
+        </form>
+    </div>
+
+    <div class="search-container">
+        <div class="search-options">
+            <h3>Advance Searches</h3>
+            <form id="advance-form">
+                <hr>
+                <p>Title</p>
+                <input type="text" id="title-input">
+                <p>Setting</p>
+                <input type="text" id="setting-input">
+                <p>Character</p>
+                <input type="text" id="character-input">
+                <p>Genres</p>
+                <input type="text" id="genres-input">
+                <p>ISBN13</p>
+                <input type="text" id="isbn13-input">
+                <hr>
+                <button id="form-submit" type="submit">submit</button>
+            </form>
+        </div>
+        <div id="search-results" class="book-container"></div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-content">
+            <h3>Author: Duc Nguyen, Tianyi Lu</h3>
+        </div>
+    </div>
+
+</body>
+</html>

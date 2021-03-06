@@ -3,7 +3,7 @@ Author: Duc, Sky
 Description: 
 Date: 2021-02-23 17:41:16
 LastEditors: Tianyi Lu
-LastEditTime: 2021-03-06 04:50:23
+LastEditTime: 2021-03-06 08:07:18
 '''
 import sys
 import flask
@@ -58,7 +58,7 @@ def get_books():
 	setting = flask.request.args.get('setting', default=None, type=str)
 	character = flask.request.args.get('character', default=None, type=str)
 	genres = flask.request.args.get('genres', default=None, type=str)
-	isbn13 = flask.request.args.get('isbn13', default=None, type=int)
+	isbn13 = flask.request.args.get('isbn13', default=None, type=str)
 
 	query = 'SELECT DISTINCT * FROM books'
 	query_conditions = ["books.rating_count > 50"]
@@ -85,7 +85,7 @@ def get_books():
 		query_data.append(isbn13)
 		query_conditions.append(f"books.isbn13 = %s")
 	if (genres):
-		query = "SELECT DISTINCT books.id, books.series_id, books.title, books.cover_link, \
+		query = "SELECT DISTINCT books.id, books.title, books.cover_link, books.series_id, \
 			     books.rating_count, books.review_count, books.average_rate, books.number_of_page, \
 				 books.date_published, books.publisher, books.isbn13, books.settings, books.characters, \
 				 books.amazon_link, books.descriptions \
@@ -110,9 +110,9 @@ def get_books():
 	for row in cursor:
 		book_dict = {}
 		book_dict['id'] = row[0]
-		book_dict['series_id'] = row[1]
-		book_dict['title'] = row[2]
-		book_dict['cover_link'] = row[3]
+		book_dict['title'] = row[1]
+		book_dict['cover_link'] = row[2]
+		book_dict['series_id'] = row[3]
 		book_dict['rating_count'] = row[4]
 		book_dict['review_count'] = row[5]
 		book_dict['average_rate'] = row[6]
@@ -123,7 +123,7 @@ def get_books():
 		book_dict['settings'] = row[11]
 		book_dict['characters'] = row[12]
 		book_dict['amazon_link'] = row[13]
-		book_dict['descriptions'] = row[14]
+		book_dict['description'] = row[14]
 		books_list.append(book_dict)
 	return json.dumps(books_list)
 
@@ -224,9 +224,9 @@ def get_book_by_id(book_id):
 
 	book_dict = {}
 	book_dict['id'] = cursor[0]
-	book_dict['series_id'] = cursor[1]
-	book_dict['title'] = cursor[2]
-	book_dict['cover_link'] = cursor[3]
+	book_dict['title'] = cursor[1]
+	book_dict['cover_link'] = cursor[2]
+	book_dict['series_id'] = cursor[3]
 	book_dict['rating_count'] = cursor[4]
 	book_dict['review_count'] = cursor[5]
 	book_dict['average_rate'] = cursor[6]
@@ -237,7 +237,7 @@ def get_book_by_id(book_id):
 	book_dict['settings'] = cursor[11]
 	book_dict['characters'] = cursor[12]
 	book_dict['amazon_link'] = cursor[13]
-	book_dict['descriptions'] = cursor[14]
+	book_dict['description'] = cursor[14]
 	return json.dumps(book_dict)
 
 @api.route('/books/recommendation/<book_id>') 

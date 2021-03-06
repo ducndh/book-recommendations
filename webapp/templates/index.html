@@ -3,7 +3,7 @@
  * @Description: 
  * @Date: 2021-02-23 18:19:02
  * @LastEditors: Tianyi Lu
- * @LastEditTime: 2021-03-06 03:14:21
+ * @LastEditTime: 2021-03-06 07:27:13
 -->
 <!DOCTYPE html>
 <html>
@@ -23,8 +23,8 @@
     <div class="topnav">
         <a class="active" href="{{  url_for('home') }}"><b>BOOKMATCH</b></a>
         <a href="{{ url_for('home') }}">HOME</a>
-        <a href="{{ url_for('pending', path='default') }}">BOOKSHELF</a>
-        <a href="{{ url_for('pending', path='default') }}">LOG IN</a>
+        <a href="{{ url_for('pending') }}">BOOKSHELF</a>
+        <a href="{{ url_for('pending') }}">LOG IN</a>
 
         <form id="search-form">
             <input type="text" id="basic-search" placeholder="Search..">
