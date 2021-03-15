@@ -1,9 +1,9 @@
 /*
- * @Author: Tianyi Lu
- * @Description: 
+ * @Author: Duc, Sky
+ * @Description: javascript for rendering stars for average rating of books
  * @Date: 2021-03-16 01:10:29
  * @LastEditors: Tianyi Lu
- * @LastEditTime: 2021-03-16 01:11:27
+ * @LastEditTime: 2021-03-16 05:18:51
  */
 
 export function renderStars(average_rate) {

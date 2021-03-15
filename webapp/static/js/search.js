@@ -1,9 +1,9 @@
 /*
- * @Author: Tianyi Lu
- * @Description: 
+ * @Author: Duc, Sky
+ * @Description: javascript for rendering search result page
  * @Date: 2021-03-06 04:55:15
  * @LastEditors: Tianyi Lu
- * @LastEditTime: 2021-03-16 02:54:10
+ * @LastEditTime: 2021-03-16 05:18:31
  */
 
 import { getBaseURL, getStaticURL, getAPIBaseURL } from './url.js';

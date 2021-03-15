@@ -1,9 +1,9 @@
 /*
- * @Author: Tianyi Lu
- * @Description: 
+ * @Author: Duc, Sky
+ * @Description: javascript for rendering individual book page
  * @Date: 2021-03-06 03:37:46
  * @LastEditors: Tianyi Lu
- * @LastEditTime: 2021-03-16 04:31:59
+ * @LastEditTime: 2021-03-16 05:18:07
  */
 
 import { getBaseURL, getStaticURL, getAPIBaseURL } from './url.js';

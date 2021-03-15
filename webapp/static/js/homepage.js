@@ -1,9 +1,9 @@
 /*
  * @Author: Duc, Sky
- * @Description: 
+ * @Description: javascript for rendering home page
  * @Date: 2021-02-23 20:20:40
  * @LastEditors: Tianyi Lu
- * @LastEditTime: 2021-03-16 02:45:40
+ * @LastEditTime: 2021-03-16 05:18:20
  */
 
 import { getBaseURL, getStaticURL, getAPIBaseURL } from './url.js';
