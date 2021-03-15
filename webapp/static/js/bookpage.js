@@ -3,7 +3,7 @@
  * @Description: javascript for rendering individual book page
  * @Date: 2021-03-06 03:37:46
  * @LastEditors: Tianyi Lu
- * @LastEditTime: 2021-03-16 05:18:07
+ * @LastEditTime: 2021-03-16 05:25:12
  */
 
 import { getBaseURL, getStaticURL, getAPIBaseURL } from './url.js';
@@ -39,9 +39,12 @@ function renderBook(id) {
 
         listBody += '<h4>'+ book['title']+'</h4>'
                     + '<p><b>Published Date</b>: ' + book['date_published'] + '</p>'
+                    + '<p><b>ISBN13</b>: ' + book['isbn13'] + '</p>'
                     + '<p>' + description + '</p>'
                     + '<p><b>Average Rating</b>: ' + renderStars(book['average_rate']) + book['average_rate'] + '</p>'
                     + '<p><b>Number of Ratings</b>: ' + book['rating_count'] + '</p>'
+                    + '<p><b>Amazon link</b>: ' 
+                    + '<a href="'+book["amazon_link"]+'">'+book["amazon_link"]+'</p>'
                     + '<hr/>';
 
         var bookElement = document.getElementById('book-info');
