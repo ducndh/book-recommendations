@@ -3,23 +3,14 @@
  * @Description: 
  * @Date: 2021-02-23 20:20:40
  * @LastEditors: Tianyi Lu
- * @LastEditTime: 2021-03-06 08:23:13
+ * @LastEditTime: 2021-03-16 02:45:40
  */
 
+import { getBaseURL, getStaticURL, getAPIBaseURL } from './url.js';
+import { renderStars } from './star.js';
+import { getSearchResult } from './search.js';
+
 window.onload = initialize;
-
-function getBaseURL() {
-    var baseURL = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port
-    return baseURL
-}
-
-function getAPIBaseURL() {
-    return getBaseURL() + '/api';
-}
-
-function getStaticURL() {
-    return getBaseURL() + '/static';
-}
 
 function renderHeadline(numItems) {
     var url = getAPIBaseURL() + '/books'
@@ -85,20 +76,6 @@ function renderGenres() {
     });
 }
 
-function renderStars(average_rate) {
-    result = ''
-    numStars = parseInt(average_rate)
-    for (var k = 0; k < numStars; k++) {
-        result += '<span class="fa fa-star checked"></span>'
-    }
-
-    for (var k = 0; k < (5-numStars); k++) {
-        result += '<span class="fa fa-star"></span>'
-    }
-
-    return result   
-}
-
 function renderBookList(endpoint, elementId, numItems) {
     var url = getAPIBaseURL() + '/books' + endpoint;
     fetch(url, {method: 'get'})
@@ -156,13 +133,6 @@ function renderBookList(endpoint, elementId, numItems) {
     .catch(function(error) {
         console.log(error);
     });
-}
-
-function getSearchResult(event) {
-    event.preventDefault()
-    var searchKey = document.getElementById("basic-search").value;
-    url = getBaseURL() + '/search?title=' + searchKey;
-    window.location.href = url;
 }
 
 function initialize() {

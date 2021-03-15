@@ -3,7 +3,7 @@ Author: Duc, Sky
 Description: 
 Date: 2021-02-19 20:53:27
 LastEditors: Tianyi Lu
-LastEditTime: 2021-03-06 07:53:04
+LastEditTime: 2021-03-16 04:47:40
 '''
 import sys
 import argparse
@@ -29,10 +29,6 @@ def search():
 @app.route('/book')
 def book():
     return flask.render_template('bookpage.html')
-
-# @app.route('/test')
-# def book():
-#     return flask.render_template('test.html')
 
 @app.route('/pending')
 def pending():

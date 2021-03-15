@@ -3,17 +3,19 @@
  * @Description: 
  * @Date: 2021-03-06 03:37:46
  * @LastEditors: Tianyi Lu
- * @LastEditTime: 2021-03-06 07:59:06
+ * @LastEditTime: 2021-03-16 04:33:58
 -->
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/webapp.css') }}" />
+    <!-- Icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Add CSS for this page -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bookpage.css') }}" />
     <!-- Add JS for this page -->
-    <script type="text/javascript" src="{{ url_for('static', filename='js/bookpage.js') }}"></script>
+    <script type="module" src="{{ url_for('static', filename='js/bookpage.js') }}"></script>
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
     <title>BookMatch</title>
 </head>
@@ -21,19 +23,23 @@
     <div class="topnav">
         <a class="active" href="#home"><b>BOOKMATCH</b></a>
         <a href="{{ url_for('home') }}">HOME</a>
-        <a href="{{ url_for('pending') }}">BOOKSHELF</a>
-        <a href="{{ url_for('pending') }}">LOG IN</a>
 
         <form id="search-form">
             <input type="text" id="basic-search" placeholder="Search..">
         </form>
     </div>
 
-    <div class="book-container">
-        <div id="book-img">
+    <div class="container">
+        <div id="img">
         </div>
-        <div id="book-details"></div>
+        <div id="book-details">
+            <div id="book-info"></div>
+            <div id="author-info"></div>
+        </div>
     </div>
+    <hr>
+    <h3>Recommendations</h3>
+    <div id="recommendations" class="book-container"></div>
 
 
 </body>

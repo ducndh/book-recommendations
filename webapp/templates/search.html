@@ -3,7 +3,7 @@
  * @Description: 
  * @Date: 2021-03-06 04:55:06
  * @LastEditors: Tianyi Lu
- * @LastEditTime: 2021-03-06 06:40:50
+ * @LastEditTime: 2021-03-16 03:04:56
 -->
 
 <!DOCTYPE html>
@@ -15,7 +15,7 @@
     <!-- Add CSS for this page -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/search.css') }}" />
     <!-- Add JS for this page -->
-    <script type="text/javascript" src="{{ url_for('static', filename='js/search.js') }}"></script>
+    <script type="module" src="{{ url_for('static', filename='js/search.js') }}"></script>
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
     <title>BookMatch</title>
 </head>
@@ -23,8 +23,6 @@
     <div class="topnav">
         <a class="active" href="#home"><b>BOOKMATCH</b></a>
         <a href="{{ url_for('home') }}">HOME</a>
-        <a href="{{ url_for('pending') }}">BOOKSHELF</a>
-        <a href="{{ url_for('pending') }}">LOG IN</a>
 
         <form id="search-form">
             <input type="text" id="basic-search" placeholder="Search..">
@@ -33,19 +31,19 @@
 
     <div class="search-container">
         <div class="search-options">
-            <h3>Advance Searches</h3>
             <form id="advance-form">
+                <h3>Advance Searches</h3>
                 <hr>
                 <p>Title</p>
-                <input type="text" id="title-input">
+                <input type="text" id="title-input" placeholder="title of the book">
                 <p>Setting</p>
-                <input type="text" id="setting-input">
+                <input type="text" id="setting-input" placeholder="where the story takes place">
                 <p>Character</p>
-                <input type="text" id="character-input">
+                <input type="text" id="character-input" placeholder="character in the book">
                 <p>Genres</p>
-                <input type="text" id="genres-input">
+                <input type="text" id="genres-input" placeholder="genre of the book">
                 <p>ISBN13</p>
-                <input type="text" id="isbn13-input">
+                <input type="text" id="isbn13-input" placeholder="unique isbn13 number">
                 <hr>
                 <button id="form-submit" type="submit">submit</button>
             </form>

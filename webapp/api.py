@@ -3,7 +3,7 @@ Author: Duc, Sky
 Description: 
 Date: 2021-02-23 17:41:16
 LastEditors: Tianyi Lu
-LastEditTime: 2021-03-06 08:07:18
+LastEditTime: 2021-03-16 04:54:27
 '''
 import sys
 import flask
@@ -53,22 +53,16 @@ def extend_query(query, conditions):
 # &setting={setting}&character={character}&isbn13={isbn13}
 def get_books():
 	title = flask.request.args.get('title', default=None,type=str)
-	# start_year = flask.request.args.get('start_year', default=None, type=int)
-	# end_year = flask.request.args.get('end_year', default=None, type=int)
+
 	setting = flask.request.args.get('setting', default=None, type=str)
 	character = flask.request.args.get('character', default=None, type=str)
 	genres = flask.request.args.get('genres', default=None, type=str)
-	isbn13 = flask.request.args.get('isbn13', default=None, type=str)
+	isbn = flask.request.args.get('isbn13', default=None, type=str)
 
 	query = 'SELECT DISTINCT * FROM books'
 	query_conditions = ["books.rating_count > 50"]
 	query_data = []
-	# if (start_year):
-	# 	query_data.append(start_year)
-	# 	query_conditions.append(f"books.date_published > %s")
-	# if (end_year):
-	# 	query_data.append(end_year)
-	# 	query_conditions.append(f"books.date_published < %s")
+	
 	if (title):
 		title = "%" + title.lower() + "%"
 		query_data.append(title)
@@ -81,8 +75,8 @@ def get_books():
 		character = "%" + character.lower() + "%"
 		query_data.append(character)
 		query_conditions.append(f"LOWER(books.characters) LIKE %s")
-	if (isbn13):
-		query_data.append(isbn13)
+	if (isbn):
+		query_data.append(isbn)
 		query_conditions.append(f"books.isbn13 = %s")
 	if (genres):
 		query = "SELECT DISTINCT books.id, books.title, books.cover_link, books.series_id, \
@@ -101,7 +95,7 @@ def get_books():
 	if len(query_conditions) > 0:
 		query = extend_query(query, query_conditions)
 
-	query += " ORDER BY books.average_rate DESC LIMIT 10;"
+	query += " ORDER BY books.average_rate DESC;"
 	data = tuple(query_data)
 	cursor = get_query(query, data)
 
@@ -242,15 +236,22 @@ def get_book_by_id(book_id):
 
 @api.route('/books/recommendation/<book_id>') 
 def get_recommendation_by_id(book_id):
-	query = f"SELECT recommendations.recommended_book_id \
+	query = f"SELECT DISTINCT recommendations.recommended_book_id \
 		      FROM recommendations WHERE recommendations.current_book_id = %s;"
 	data = (book_id, ) 
 	cursor = get_query(query, data)
-	recommendation_dict = {}
-	recommendation_dict['recommendations'] = []
+
+	recommendations = []
 	for row in cursor:
-		recommendation_dict['recommendations'].append(row[0])
-	return json.dumps(recommendation_dict)
+		if len(recommendations) >= 5:
+			break
+
+		try:
+			recommendations.append(json.loads(get_book_by_id(row[0])))
+		except:
+			continue
+
+	return json.dumps(recommendations)
 
 @api.route('/books/genre/<book_id>') 
 def get_genre_by_id(book_id):
@@ -268,51 +269,25 @@ def get_genre_by_id(book_id):
 		genres_list.append(genre_dict)
 	return json.dumps(genres_list)
 
-
-# full_name text,
-#     cover_link text,
-#     birth_place text,
-#     about text
-@api.route('/authors/<author_id>') 
-def get_author_by_id(author_id):
+@api.route('/books/author/<book_id>')
+def get_book_author(book_id):
 	query = f"SELECT DISTINCT authors.full_name, authors.cover_link, \
 	          authors.birth_place, authors.about, books_authors.book_id \
-		      FROM authors, books_authors WHERE authors.id = %s \
+		      FROM authors, books_authors WHERE books_authors.book_id = %s \
 	          AND books_authors.author_id = authors.id;" 
-	data = (author_id,) 
-	cursor = get_query(query, data)
+	data = (book_id,) 
+	cursor = get_query(query, data).fetchone()
 	author_dict = {}
-	books_list = []
-	for row in cursor:
-		author_dict['full_name'] = row[0]
-		author_dict['cover_link'] = row[1]
-		author_dict['birth_place'] = row[2]
-		author_dict['about'] = row[3]
-		books_list.append(row[4])
 
-	author_dict['book_id'] = books_list
+	author_dict['full_name'] = cursor[0]
+	author_dict['cover_link'] = cursor[1]
+
 	return json.dumps(author_dict)
-
-@api.route('/authors/search') 
-def get_author_by_name():
-	name = flask.request.args.get('name', default='',type=str)
-	name = '%' + name.lower() + '%'
-	data = (name, )
-	query = f"SELECT * FROM authors WHERE LOWER(authors.full_name) LIKE %s;"
-	cursor = get_query(query, data)
-	author_list = []
-	for row in cursor:
-		author_dict = {}
-		author_dict['full_name'] = row[0]
-		author_dict['cover_link'] = row[1]
-		author_dict['birth_place'] = row[2]
-		author_dict['about'] = row[3]
-		author_list.append(author_dict)
-	return json.dumps(author_list)
 
 @api.route('/genres')
 def get_genres():
-	query = "SELECT genres.genre FROM genres WHERE LENGTH(genres.genre) < 12 AND genres.genre <> 'Pornography' ORDER BY RANDOM() LIMIT 10;"
+	query = "SELECT genres.genre FROM genres, genres_votes\
+			 WHERE genres.id = genres_votes.genre_id GROUP BY genres.genre ORDER BY COUNT(genres_votes.genre_id) DESC LIMIT 10;"
 	cursor = get_query(query, tuple())
 	return json.dumps([x[0] for x in cursor])
 

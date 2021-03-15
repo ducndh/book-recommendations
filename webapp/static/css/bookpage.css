@@ -1,16 +1,89 @@
 /*
     Author: Duc, Sky
 */
+.checked {
+    color: orange;
+}
 
-.book-container {
+.container {
+    margin-top: 5px;
     display: flex;
 }
 
-#book-img {
-    width: 400px;
+.img {
+    width: 300px;
 }
 
-#book-details{
+#img {
+    width: auto;
+}
+
+#book-details {
     padding: 0px 20px;
+    padding-bottom: 10px;
     background-color: gainsboro;
+    margin-left: 5px;
+    width: calc(100% - 305px);
+}
+
+#author-info {
+    margin-top: 10px;
+    display: flex;
+}
+
+.author-img {
+    width: 90px;
+}
+
+.author-name {
+    margin-left: 10px;
+}
+
+.book-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: auto;
+    flex-wrap: wrap;
+}
+
+.book-item {
+    width: 400px;
+    height: auto;
+    background-color: rgb(221, 221, 221);
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    transition: 0.3s;
+    text-decoration: none;
+    color: black;
+}
+
+.book-item:hover {
+    opacity: 0.5;
+}
+
+.book-img{
+    float: left;
+    width: 135px;
+    height: 100%;
+}
+
+.book-text {
+    margin: 5px;
+}
+
+.book-text h4 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.book-date {
+    float:right;
+    color: gray;
+}
+
+.checked {
+    color: orange;
 }
